@@ -10,7 +10,6 @@ def number_of_teams(teams):
 
 def print_output(teams, speisen, x, y ):
   print("--- Welches Team kocht welchen Gang ---")
-  #model._vars = model.getVars()
   for i in teams:
     for s in speisen:
       if(y[i,s].x > 0.5):
@@ -190,14 +189,6 @@ def solve(teams, zimmer, unvertraeglichkeiten, speisen, vorspeise, hauptspeise, 
       if i != j:
         mc[i,j] = model.addVar(name = 'mc_'+ i + '_' + j, vtype = GRB.BINARY)
 
-  """
-  # TODO
-  kd = {}
-  for i in teams:
-    for s in speisen:
-      kd[i,s] = model.addVar(name = 'kd_'+ i + '_' + s, vtype = GRB.BINARY)
-  """
-
   # Variable that is one if the team i meets team j at any dish
   tm = {}
   for i in teams:
@@ -205,33 +196,20 @@ def solve(teams, zimmer, unvertraeglichkeiten, speisen, vorspeise, hauptspeise, 
       if i != j:
         tm[i,j] = model.addVar(name = "tm_" + i + "_" + j, vtype = GRB.BINARY)
 
-  """
-  # variable that is one if the team i does not meet any team of a kawo k
-  knm = {}
-  for i in teams:
-    for k in kawos:
-      knm[i,k] = model.addVar(name = "knm_" + i + "_" + k, vtype = GRB.BINARY)
-  """
-
   # objective function:
   model.setObjective( 100 * quicksum(c[i,s] for i in teams for s in speisen) # amount of teams having 3 other teams as guests
                     + 100 * quicksum(d[i,s] for i in teams for s in speisen) # amount of teams having 1 other team as guests
                     + quicksum(p[i,s] * y[i,s] for i in teams for s in speisen)  # teams cooking their preferred dish
-                    + 400 * quicksum(mc[i,j] for i in teams for j in teams if i < j) #TODO
-                    + 200 * quicksum(tm[i,j] for i in teams for j in teams if i < j) # TODO
-                    #+ 200 * quicksum(knm[i,k] for i in teams for k in kawos ) #TODO
+                    + 400 * quicksum(mc[i,j] for i in teams for j in teams if i < j) # punish if two teams meet twice
+                    + 200 * quicksum(tm[i,j] for i in teams for j in teams if i < j) # punish if a team does not meet teams of every other Kawo 
                     ) 
 
   model.update()  
 
   #Constraints:
 
-  # TODO in case: 
-  # vegan/vegetarian distribution
-  
   #model.addConstr(quicksum(x['Ersti & Ersti', j, s] + x['Die Kräuterkenner und Gewürzgarnierer', j, s] for j in teams if j != 'Ersti & Ersti' and j != 'Die Kräuterkenner und Gewürzgarnierer' for s in speisen)  == 6 )
-  
-
+ 
   #1. Variable linking x and y. Allow a number of guest teams unequal to 2 if the number of overall teams is not dividable by 3.
   for i in teams:
     for s in speisen:
@@ -307,15 +285,15 @@ def solve(teams, zimmer, unvertraeglichkeiten, speisen, vorspeise, hauptspeise, 
         model.addConstr(mc[i,j] == mc[j,i])
   
   
-  #7.TODO
-  #7a. TODO
+  #7. Try to have a team meet teams of every kawo
+  #7a. A team is met when cooked for it 
   for i in teams:
     for j in teams:
       for s in speisen:
         if i < j:
           model.addConstr(x[i,j,s] <= tm[i,j])
 
-  #7b. TODO
+  #7b. Team i meets a team j if both are guests of team g
   for i in teams:
     for j in teams:
       for g in teams:
@@ -323,30 +301,28 @@ def solve(teams, zimmer, unvertraeglichkeiten, speisen, vorspeise, hauptspeise, 
           for s in speisen:
             model.addConstr(x[g,j,s] <= tm[i,j] + (1 - x[g,i,s]))
 
-  #7c. TODO
+  #7c. Make teams meet variable symmetric
   for i in teams:
     for j in teams:
       if i < j:
         model.addConstr(tm[i,j] == tm[j,i])
 
  
-  #7d. TODO
+  #7d. The main constraint. Try to meet atleast one team of every kawo
   for i in teams:
     for k in kawos:
       model.addConstr(quicksum(kawo_bin[j,k] * tm[i,j] for j in teams if i != j) >= 1 ) #- knm[i,k])
   
-  #model.setParam('NodefileStart', 0.5)
+
+  ## CONFIG
   model.setParam('TimeLimit', 30*60)
-  #model.setParam('Threads', 4)
-  #model._vars = model.getVars()
+
+  # Optimize the model
   model.optimize()
 
 
   if model.status == GRB.OPTIMAL or True:
     print('\nOptimaler Zielfunktionswert: %g\n' % model.ObjVal)
-
-    #print_output(teams, speisen,x,y)
-
     postprocessing(teams, speisen, kawo, x, y, p, mc,tm,c,d)
 
   else:
