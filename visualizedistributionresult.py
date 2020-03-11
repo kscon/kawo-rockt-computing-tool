@@ -17,4 +17,4 @@ def visualize(ck1, ck2,ck3):
     df.plot.pie(y = "Kawo Dish Distribution",figsize=(6, 6), autopct=lambda p: "{:.0f}".format(np.round((p*numberofteams)/100., 0)))
     #plt.show()
     #fig = df.get_figure()
-    plt.savefig(".output/kawodistribution.pdf")
+    plt.savefig("./output/kawodistribution.pdf")
