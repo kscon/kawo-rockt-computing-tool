@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 from gurobipy import *
-import visualizedistributionresult
 
-
-def solve(teams, zimmer, unvertraeglichkeiten, speisen, vorspeise, hauptspeise, nachspeise, kawo, p, kawo_bin, kawos):
+def solve(teams, zimmer, speisen, kawo, p, kawo_bin, kawos, number_of_teams):
     model = Model("Kawo3Rockt!")
 
     model.modelsense = GRB.MINIMIZE
@@ -78,7 +76,7 @@ def solve(teams, zimmer, unvertraeglichkeiten, speisen, vorspeise, hauptspeise, 
     # 3. Every dish is cooked by enough teams such that every team can be part of a dish as a guest.
     # A higher value for the constant 'f' allows more solutions for unpairy team numbers, though f = 1 is sufficient
     # for most cases
-    num = number_of_teams(teams)
+    num = number_of_teams
     for s in speisen:
         f = 1
         model.addConstr(quicksum(y[i, s] for i in teams) <= (num // 3) + f)
@@ -159,7 +157,7 @@ def solve(teams, zimmer, unvertraeglichkeiten, speisen, vorspeise, hauptspeise, 
             if i < j:
                 model.addConstr(tm[i, j] == tm[j, i])
 
-    # 7d. The main constraint. Try to meet atleast one team of every kawo
+    # 7d. The main constraint. Try to meet at least one team of every kawo
     for i in teams:
         for k in kawos:
             model.addConstr(quicksum(kawo_bin[j, k] * tm[i, j] for j in teams if i != j) >= 1)  # - knm[i,k])
@@ -172,7 +170,7 @@ def solve(teams, zimmer, unvertraeglichkeiten, speisen, vorspeise, hauptspeise, 
 
     if model.status == GRB.OPTIMAL or True:
         print('\nOptimaler Zielfunktionswert: %g\n' % model.ObjVal)
-        postprocessing(teams, speisen, kawo, x, y, p, mc, tm, c, d)
+        return x, y, p, mc, tm, c, d
 
     else:
         print('Keine Optimalloesung gefunden. Status: %i' % (model.status))
