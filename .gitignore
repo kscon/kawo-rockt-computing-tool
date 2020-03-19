@@ -1,5 +1,6 @@
-#
-#output/
+# Pycharm
+.idea/
+
 
 input/kaworockt_data.py
 
