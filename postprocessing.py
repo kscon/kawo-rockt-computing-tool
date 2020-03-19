@@ -1,4 +1,4 @@
-import visualizedistributionresult
+import visualizeoutput
 
 
 def postprocessing(teams, speisen, kawo, x, y, p, mc, tm, c, d):
@@ -16,7 +16,7 @@ def postprocessing(teams, speisen, kawo, x, y, p, mc, tm, c, d):
 
     count_1k, count_2k, count_3k = print_kawo_distribution_per_dish(kawo, speisen, teams, x, y)
 
-    visualizedistributionresult.visualize(count_1k, count_2k, count_3k)
+    visualizeoutput.visualize(count_1k, count_2k, count_3k)
 
     print_kawo_distribution_for_team(teams, speisen, kawo, x, y)
     # print_teams_met(teams, speisen, x,y, tm)
@@ -48,6 +48,7 @@ def print_teams_guests(speisen, teams, x):
 
 def print_teams_dishes(speisen, teams, y):
     print("--- Welches Team kocht welchen Gang ---")
+    print(y)
     for i in teams:
         for s in speisen:
             if (y[i, s].x > 0.5):
