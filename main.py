@@ -17,12 +17,10 @@ def main():
                                                                nachspeise, kawo, kawos)
 
     # solve the model
-    x, y, mc, tm, c, d = solvemodel.solve(teams, zimmer, speisen,  p, kawo_bin, kawos, number_of_teams)
+    x, y, mc, tm, c, d = solvemodel.solve(teams, zimmer, speisen, p, kawo_bin, kawos, number_of_teams)
 
-    # do postprocessing
-    postprocessing.postprocessing(teams, speisen, kawo, x, y, p, mc, tm, c, d)
-
-    # visualization
+    # do postprocessing and visualization
+    postprocessing.postprocessing(teams, speisen, zimmer, kawo, unvertraeglichkeiten, x, y, p, mc, tm, c, d)
 
 
 if __name__ == '__main__':
