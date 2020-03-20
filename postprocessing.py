@@ -29,7 +29,7 @@ def print_teams_route(speisen, teams, x):
         for s in speisen:
             for i in teams:
                 if i != j:
-                    if (x[i, j, s].x > 0.5):
+                    if (x[i, j, s] > 0.5):
                         print('Das Team %s muss zu Team %s für den Gang %s.' % (j, i, s))
     print("")
 
@@ -40,7 +40,7 @@ def print_teams_guests(speisen, teams, x):
         for i in teams:
             for j in teams:
                 if i != j:
-                    if (x[i, j, s].x > 0.5):
+                    if (x[i, j, s] > 0.5):
                         print('Es kocht Team %s für Team %s den Gang %s.' % (i, j, s))
                         # print('Dabei sollte das Team %s bitte auf %s verzichten.'% (i, unvertraeglichkeiten[j]))
     print("")
@@ -51,7 +51,7 @@ def print_teams_dishes(speisen, teams, y):
     print(y)
     for i in teams:
         for s in speisen:
-            if (y[i, s].x > 0.5):
+            if (y[i, s] > 0.5):
                 print('Es kocht Team %s den Gang %s.' % (i, s))
     print("")
 
@@ -65,9 +65,9 @@ def print_kawo_distribution_per_dish(kawo, speisen, teams, x, y):
         for s in speisen:
             A = []
             A.append(kawo[i])
-            if y[i, s].x > 0.5:
+            if y[i, s] > 0.5:
                 for j in teams:
-                    if (i != j and x[i, j, s].x > 0.5):
+                    if (i != j and x[i, j, s] > 0.5):
                         A.append(kawo[j])
 
                 if (1 in A and 2 in A and 3 in A):
@@ -89,17 +89,17 @@ def print_teams_meet_several_times(speisen, teams, x):
             if i != j:
                 teamcount = 0
                 for s in speisen:  # Team i bekocht Team j
-                    if (x[i, j, s].x > 0.5):
+                    if (x[i, j, s] > 0.5):
                         teamcount = teamcount + 1
 
                 for g in teams:  # Team i und Team j treffen sich bei einem fremden Team
                     if (g != i and g != j):
                         for s in speisen:
-                            if (x[g, i, s].x > 0.5 and x[g, j, s].x > 0.5):
+                            if (x[g, i, s] > 0.5 and x[g, j, s] > 0.5):
                                 teamcount = teamcount + 1
 
                 for s in speisen:  # Team j bekocht Team i
-                    if (x[j, i, s].x > 0.5):
+                    if (x[j, i, s] > 0.5):
                         teamcount = teamcount + 1
 
                 if (teamcount > 1):
@@ -112,9 +112,9 @@ def print_teams_not_cooking_preferred_dish(p, speisen, teams, y):
     print("--- Welches Team kocht nicht seinen präferierten Gang ---")
     for i in teams:
         for s in speisen:
-            if p[i, s] * y[i, s].x >= 50:
+            if p[i, s] * y[i, s] >= 50:
                 print('Es kocht Team %s seinen am wenigsten präferierten Gang.' % (i))
-            elif p[i, s] * y[i, s].x >= 5:
+            elif p[i, s] * y[i, s] >= 5:
                 print("Es kocht Team %s seinen zweit-präferierten Gang." % (i))
     print("")
 
@@ -123,14 +123,14 @@ def print_team_cooks_not_for_three(teams, speisen, x, y, c, d):
     print("")
     for i in teams:
         for s in speisen:
-            if (c[i, s].x > 0.5):
-                A = [j for j in teams if i != j and x[i, j, s].x > 0.5]
+            if (c[i, s] > 0.5):
+                A = [j for j in teams if i != j and x[i, j, s] > 0.5]
                 if (len(A) == 3):
                     print("team %s cooks for three teams! " % (i))
                 else:
                     print("Something went wrong")
-            elif (d[i, s].x > 0.5):
-                A = [j for j in teams if i != j and x[i, j, s].x > 0.5]
+            elif (d[i, s] > 0.5):
+                A = [j for j in teams if i != j and x[i, j, s] > 0.5]
                 if (len(A) == 1):
                     print("team %s cooks for one team! " % (i))
                 else:
@@ -142,16 +142,16 @@ def print_kawo_distribution_for_team(teams, speisen, kawo, x, y):
         A = []
         # A.append(kawo[i])
         for s in speisen:
-            if (y[i, s].x > 0.5):
+            if (y[i, s] > 0.5):
                 for j in teams:
-                    if (i != j and x[i, j, s].x > 0.5):
+                    if (i != j and x[i, j, s] > 0.5):
                         A.append(kawo[j])
 
             for j in teams:
-                if (i != j and x[j, i, s].x > 0.5):
+                if (i != j and x[j, i, s] > 0.5):
                     A.append(kawo[j])
                     for g in teams:
-                        if (i != g and j != g and x[j, g, s].x > 0.5):
+                        if (i != g and j != g and x[j, g, s] > 0.5):
                             A.append(kawo[g])
         if ((A.count(1) == 0 and kawo[i] != 1) or (A.count(2) == 0 and kawo[i] != 2) or (
                 A.count(3) == 0 and kawo[i] != 3)):
@@ -163,5 +163,5 @@ def print_teams_met(teams, speisen, x, y, tm):
     print("")
     for i in teams:
         for j in teams:
-            if i != j and tm[i, j].x > 0.5:
+            if i != j and tm[i, j] > 0.5:
                 print("Team %s trifft auf Team %s" % (i, j))
