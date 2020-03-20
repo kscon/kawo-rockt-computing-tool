@@ -191,7 +191,7 @@ def solve(teams, zimmer, speisen, p, kawo_bin, kawos, number_of_teams):
 
     if model.status == GRB.OPTIMAL or True:
         print('\n Optimaler gefundener Zielfunktionswert: %g\n' % model.ObjVal)
-        store_variable_values(teams, speisen, x, y, p, mc, tm, c, d)
+        store_variable_values(teams, speisen, x, y, mc, tm, c, d)
         return x, y, mc, tm, c, d
 
     else:
