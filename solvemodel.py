@@ -1,7 +1,27 @@
 # -*- coding: utf-8 -*-
 from gurobipy import *
 
-def solve(teams, zimmer, speisen, kawo, p, kawo_bin, kawos, number_of_teams):
+
+# store the actual variable values into the dict as gurobi does not do this automatically
+def store_variable_values(teams, speisen, x, y, mc, tm, c, d):
+    for i in teams:
+        for s in speisen:
+            y[i, s] = y[i, s].X
+            c[i, s] = c[i, s].X
+            d[i, s] = d[i, s].X
+    for i in teams:
+        for j in teams:
+            if i != j:
+                for s in speisen:
+                    x[i, j, s] = x[i, j, s].X
+    for i in teams:
+        for j in teams:
+            if i != j:
+                mc[i, j] = mc[i, j].x
+                tm[i, j] = tm[i, j].x
+
+
+def solve(teams, zimmer, speisen, p, kawo_bin, kawos, number_of_teams):
     model = Model("Kawo3Rockt!")
 
     model.modelsense = GRB.MINIMIZE
@@ -63,7 +83,8 @@ def solve(teams, zimmer, speisen, kawo, p, kawo_bin, kawos, number_of_teams):
     # model.addConstr(quicksum(x['Ersti & Ersti', j, s] + x['Die Kräuterkenner und Gewürzgarnierer', j, s] for j in
     # teams if j != 'Ersti & Ersti' and j != 'Die Kräuterkenner und Gewürzgarnierer' for s in speisen)  == 6 )
 
-    # 1. Variable linking x and y. Allow a number of guest teams unequal to 2 if the number of overall teams is not dividable by 3.
+    # 1. Variable linking x and y. Allow a number of guest teams unequal to 2 if the number of overall teams is not
+    # dividable by 3.
     for i in teams:
         for s in speisen:
             model.addConstr(quicksum(x[i, j, s] for j in teams if i != j) == 2 * y[i, s] + c[i, s] - d[i, s])
@@ -74,7 +95,7 @@ def solve(teams, zimmer, speisen, kawo, p, kawo_bin, kawos, number_of_teams):
         model.addConstr(quicksum(y[i, s] for s in speisen) == 1)
 
     # 3. Every dish is cooked by enough teams such that every team can be part of a dish as a guest.
-    # A higher value for the constant 'f' allows more solutions for unpairy team numbers, though f = 1 is sufficient
+    # A higher value for the constant 'f' allows more solutions for not fitting team numbers, though f = 1 is sufficient
     # for most cases
     num = number_of_teams
     for s in speisen:
@@ -169,8 +190,9 @@ def solve(teams, zimmer, speisen, kawo, p, kawo_bin, kawos, number_of_teams):
     model.optimize()
 
     if model.status == GRB.OPTIMAL or True:
-        print('\nOptimaler Zielfunktionswert: %g\n' % model.ObjVal)
-        return x, y, p, mc, tm, c, d
+        print('\n Optimaler gefundener Zielfunktionswert: %g\n' % model.ObjVal)
+        store_variable_values(teams, speisen, x, y, p, mc, tm, c, d)
+        return x, y, mc, tm, c, d
 
     else:
         print('Keine Optimalloesung gefunden. Status: %i' % (model.status))
