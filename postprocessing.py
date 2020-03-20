@@ -1,58 +1,77 @@
 import visualizeoutput
+import os
 
 
-def postprocessing(teams, speisen, kawo, x, y, p, mc, tm, c, d):
+def postprocessing(teams, speisen, zimmer, kawo, unvertraeglichkeiten, x, y, p, mc, tm, c, d):
     print("##### POST PROCESSING #####\n")
 
-    print_teams_dishes(speisen, teams, y)
-
-    print_teams_guests(speisen, teams, x)
-
-    print_teams_route(speisen, teams, x)
-
+    # print analyses of distribution result
     print_teams_not_cooking_preferred_dish(p, speisen, teams, y)
-
     print_teams_meet_several_times(speisen, teams, x)
-
     count_1k, count_2k, count_3k = print_kawo_distribution_per_dish(kawo, speisen, teams, x, y)
-
-    visualizeoutput.visualize(count_1k, count_2k, count_3k)
-
+    # visualizeoutput.visualize(count_1k, count_2k, count_3k)
     print_kawo_distribution_for_team(teams, speisen, kawo, x, y)
-    # print_teams_met(teams, speisen, x,y, tm)
     print_team_cooks_not_for_three(teams, speisen, x, y, c, d)
 
+    # print team dependent data:
+    prepare_output_directory()
+    write_team_dishes(speisen, teams, y)
+    write_teams_guests(speisen, teams, unvertraeglichkeiten, x)
+    write_teams_route(speisen, teams, zimmer, kawo, x)
 
-def print_teams_route(speisen, teams, x):
-    print("--- Wie sieht die Route eines Teams aus ---")
+
+def prepare_output_directory():
+    if not os.path.exists('output/team_output'):
+        os.makedirs('output/team_output')
+    else:
+        for file in os.listdir('output/team_output'):
+            os.remove(os.path.join('output/team_output', file))
+
+
+def write_teams_route(speisen, teams, zimmer, kawo, x):
+    # print("--- Wie sieht die Route eines Teams aus ---")
     for j in teams:
+        directory_string = "output/team_output/" + str(j) + ".txt"
+        outfile = open(directory_string, "a")
         for s in speisen:
             for i in teams:
                 if i != j:
-                    if (x[i, j, s] > 0.5):
-                        print('Das Team %s muss zu Team %s für den Gang %s.' % (j, i, s))
+                    if x[i, j, s] > 0.5:
+                        # print('Das Team %s muss zu Team %s für den Gang %s.' % (j, i, s))
+                        tmp_output_string = "Das Team muss zu Team " + str(i) + " in Zimmer " + str(zimmer[i]) + \
+                                            " (Kawo " + str(kawo[i]) + ") für den Gang " + str(s) + "\n"
+                        outfile.write(tmp_output_string)
     print("")
 
 
-def print_teams_guests(speisen, teams, x):
-    print("---Welche Gäste hat ein Team für seinen Gang ---")
+def write_teams_guests(speisen, teams, unvertraeglichkeiten, x):
+    # print("---Welche Gäste hat ein Team für seinen Gang ---")
     for s in speisen:
         for i in teams:
+            directory_string = "output/team_output/" + str(i) + ".txt"
+            outfile = open(directory_string, "a")
             for j in teams:
                 if i != j:
-                    if (x[i, j, s] > 0.5):
-                        print('Es kocht Team %s für Team %s den Gang %s.' % (i, j, s))
+                    if x[i, j, s] > 0.5:
+                        # print('Es kocht Team %s für Team %s den Gang %s.' % (i, j, s))
                         # print('Dabei sollte das Team %s bitte auf %s verzichten.'% (i, unvertraeglichkeiten[j]))
+                        tmp_output_string = "Es kocht das Team für Team " + str(j) + \
+                                            ". Dabei sollte nach Möglichkeit auf " + str(unvertraeglichkeiten[j]) + \
+                                            " verzichtet werden.\n"
+                        outfile.write(tmp_output_string)
     print("")
 
 
-def print_teams_dishes(speisen, teams, y):
-    print("--- Welches Team kocht welchen Gang ---")
-    print(y)
+def write_team_dishes(speisen, teams, y):
+    # print("--- Welches Team kocht welchen Gang ---")
     for i in teams:
+        directory_string = "output/team_output/" + str(i) + ".txt"
+        outfile = open(directory_string, "w")
         for s in speisen:
             if (y[i, s] > 0.5):
-                print('Es kocht Team %s den Gang %s.' % (i, s))
+                # print('Es kocht Team %s den Gang %s.' % (i, s))
+                tmp_output_string = "Es kocht Team " + str(i) + " den Gang " + str(s) + "\n"
+                outfile.write(tmp_output_string)
     print("")
 
 
@@ -67,12 +86,12 @@ def print_kawo_distribution_per_dish(kawo, speisen, teams, x, y):
             A.append(kawo[i])
             if y[i, s] > 0.5:
                 for j in teams:
-                    if (i != j and x[i, j, s] > 0.5):
+                    if i != j and x[i, j, s] > 0.5:
                         A.append(kawo[j])
 
                 if (1 in A and 2 in A and 3 in A):
                     count_3k = count_3k + 1
-                elif ((1 in A and 2 in A) or (1 in A and 3 in A) or (2 in A and 3 in A)):
+                elif (1 in A and 2 in A) or (1 in A and 3 in A) or (2 in A and 3 in A):
                     count_2k = count_2k + 1
                 elif (1 in A or 2 in A or 3 in A):
                     count_1k = count_1k + 1
@@ -86,7 +105,7 @@ def print_teams_meet_several_times(speisen, teams, x):
     conflicts = 0
     for i in teams:
         for j in teams:
-            if i != j:
+            if i < j:
                 teamcount = 0
                 for s in speisen:  # Team i bekocht Team j
                     if (x[i, j, s] > 0.5):
@@ -105,7 +124,7 @@ def print_teams_meet_several_times(speisen, teams, x):
                 if (teamcount > 1):
                     print("Team %s und Team %s treffen %i-mal aufeinander!" % (i, j, teamcount))
                     conflicts = conflicts + 1
-    print("Es gibt insgesamt %i Teamwiedertreffen" % (conflicts / 2))
+    print("Es gibt insgesamt %i Teamwiedertreffen" % (conflicts))
 
 
 def print_teams_not_cooking_preferred_dish(p, speisen, teams, y):
@@ -140,7 +159,6 @@ def print_team_cooks_not_for_three(teams, speisen, x, y, c, d):
 def print_kawo_distribution_for_team(teams, speisen, kawo, x, y):
     for i in teams:
         A = []
-        # A.append(kawo[i])
         for s in speisen:
             if (y[i, s] > 0.5):
                 for j in teams:
@@ -148,10 +166,10 @@ def print_kawo_distribution_for_team(teams, speisen, kawo, x, y):
                         A.append(kawo[j])
 
             for j in teams:
-                if (i != j and x[j, i, s] > 0.5):
+                if i != j and x[j, i, s] > 0.5:
                     A.append(kawo[j])
                     for g in teams:
-                        if (i != g and j != g and x[j, g, s] > 0.5):
+                        if i != g and j != g and x[j, g, s] > 0.5:
                             A.append(kawo[g])
         if ((A.count(1) == 0 and kawo[i] != 1) or (A.count(2) == 0 and kawo[i] != 2) or (
                 A.count(3) == 0 and kawo[i] != 3)):
