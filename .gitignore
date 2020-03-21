@@ -3,7 +3,8 @@
 
 #Project based
 input/kaworockt_data.py
-output/**
+output/team_output/*
+output/*.pdf
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
