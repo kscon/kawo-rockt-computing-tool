@@ -1,9 +1,14 @@
 import visualizeoutput
-import os
+import os, copy
+
+options = {}
 
 
-def postprocessing(teams, speisen, zimmer, kawo, unvertraeglichkeiten, x, y, p, mc, tm, c, d):
+def postprocessing(option_dict, teams, speisen, zimmer, kawo, unvertraeglichkeiten, x, y, p, mc, tm, c, d):
     print("##### POST PROCESSING #####\n")
+
+    global options
+    options = copy.deepcopy(option_dict)
 
     # print analyses of distribution result
     print_teams_not_cooking_preferred_dish(p, speisen, teams, y)
@@ -37,7 +42,9 @@ def write_teams_route(speisen, teams, zimmer, kawo, x):
             for i in teams:
                 if i != j:
                     if x[i, j, s] > 0.5:
-                        # print('Das Team %s muss zu Team %s für den Gang %s.' % (j, i, s))
+                        if options['verbose'] == 1:
+                            print('Das Team %s muss zu Team %s für den Gang %s.' % (j, i, s))
+
                         tmp_output_string = "Das Team muss zu Team " + str(i) + " in Zimmer " + str(zimmer[i]) + \
                                             " (Kawo " + str(kawo[i]) + ") für den Gang " + str(s) + "\n"
                         outfile.write(tmp_output_string)
@@ -53,8 +60,10 @@ def write_teams_guests(speisen, teams, unvertraeglichkeiten, x):
             for j in teams:
                 if i != j:
                     if x[i, j, s] > 0.5:
-                        # print('Es kocht Team %s für Team %s den Gang %s.' % (i, j, s))
-                        # print('Dabei sollte das Team %s bitte auf %s verzichten.'% (i, unvertraeglichkeiten[j]))
+                        if options['verbose'] == 1:
+                            print('Es kocht Team %s für Team %s den Gang %s.' % (i, j, s))
+                            print('Dabei sollte das Team %s bitte auf %s verzichten.' % (i, unvertraeglichkeiten[j]))
+
                         tmp_output_string = "Es kocht das Team für Team " + str(j) + \
                                             ". Dabei sollte nach Möglichkeit auf " + str(unvertraeglichkeiten[j]) + \
                                             " verzichtet werden.\n"
@@ -68,8 +77,9 @@ def write_team_dishes(speisen, teams, y):
         directory_string = "output/team_output/" + str(i) + ".txt"
         outfile = open(directory_string, "w")
         for s in speisen:
-            if (y[i, s] > 0.5):
-                # print('Es kocht Team %s den Gang %s.' % (i, s))
+            if y[i, s] > 0.5:
+                if options['verbose'] == 1:
+                    print('Es kocht Team %s den Gang %s.' % (i, s))
                 tmp_output_string = "Es kocht Team " + str(i) + " den Gang " + str(s) + "\n"
                 outfile.write(tmp_output_string)
     print("")

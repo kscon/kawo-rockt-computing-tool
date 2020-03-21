@@ -1,12 +1,14 @@
-## main file for computing an optimal route for running-dinner
-from input import kaworockt_testdata
+# main file for computing an optimal route for running-dinner
+import postprocessing
 import preprocessing
 import solvemodel
-import postprocessing
+import readconfig
+from input import kaworockt_testdata
 
 
 def main():
     # read config file
+    Options = readconfig.read_config()
 
     # fetch input files
     teams, zimmer, unvertraeglichkeiten, speisen, vorspeise, hauptspeise, nachspeise, kawo, kawos \
@@ -20,7 +22,7 @@ def main():
     x, y, mc, tm, c, d = solvemodel.solve(teams, zimmer, speisen, p, kawo_bin, kawos, number_of_teams)
 
     # do postprocessing and visualization
-    postprocessing.postprocessing(teams, speisen, zimmer, kawo, unvertraeglichkeiten, x, y, p, mc, tm, c, d)
+    postprocessing.postprocessing(Options, teams, speisen, zimmer, kawo, unvertraeglichkeiten, x, y, p, mc, tm, c, d)
 
 
 if __name__ == '__main__':

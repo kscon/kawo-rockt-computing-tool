@@ -1,0 +1,8 @@
+# This is a config file for the "Kawo-Rockt"-route computing tool.
+# Lines that start with a # are comments and will not be read. The list of options can be found TODO
+# Every option needs the format "<option_name> = <option_value>", where <option_value> should be "1"
+# for activating and "0" for deactivating.
+
+# Do verbose output; e.g. print everything to console.
+VERBOSE=0
+
