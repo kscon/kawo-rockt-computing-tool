@@ -1,10 +1,10 @@
-# This file is used to read the "config.txt" file and set its options.
+# This file is used to read the "CONFIG.txt" file and set its options.
 
 def read_config():
     Options_list = {'verbose': 0}
     print("##### OPTIONS: #####")
     try:
-        with open("config.txt", 'r') as configfile:
+        with open("CONFIG.txt", 'r') as configfile:
             for line in configfile:
                 if line[0] == '#':
                     continue
@@ -23,6 +23,6 @@ def read_config():
         return Options_list
 
     except FileNotFoundError:
-        print('Warning: No configuration file "config.txt" found. Default values are used (This can lead to'
+        print('Warning: No configuration file "CONFIG.txt" found. Default values are used (This can lead to'
               'undesired behaviour!')
         return Options_list
