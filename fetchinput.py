@@ -1,5 +1,4 @@
 import pandas as pd
-from gurobipy.gurobipy import multidict
 
 
 def get_input():
@@ -8,23 +7,21 @@ def get_input():
     dframe2 = dframe.set_index('teams', drop=False)
 
     teams = dframe2.index.values.tolist()
-    print(teams)
-    dframe2.to_dict('series')
 
-    return teams, zimmer, unvertraeglichkeiten, speisen, vorspeise, hauptspeise, nachspeise, kawo, kawos
-
-
-def main():
-    teams, data = get_input()
+    data = dframe2.to_dict('series')
 
     data_zimmer = data['zimmer']
-    # print(data0)
     dict_zimmer = data_zimmer.to_dict()
 
-    print(data_zimmer)
+    data_vorspeise = data['vorspeise']
+    dict_vorspeise = data_vorspeise.to_dict()
 
-    # print(teams)
+    data_hauptspeise = data['hauptspeise']
+    dict_hauptspeise = data_hauptspeise.to_dict()
 
+    data_nachspeise = data['nachspeise']
+    dict_nachspeise = data_nachspeise.to_dict()
 
-if __name__ == '__main__':
-    main()
+    print(dict_nachspeise)
+
+    return teams, zimmer, speisen, vorspeise, hauptspeise, nachspeise, kawo, kawos

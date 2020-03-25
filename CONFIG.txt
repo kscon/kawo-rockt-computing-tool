@@ -3,6 +3,10 @@
 # Every option needs the format "<option_name> = <option_value>", where <option_value> should be "1"
 # for activating and "0" for deactivating.
 
+# Give name of the input file placed in input folder. 
+# WARNING: Make sure the column names do match the expecteted strings, otherwise data may be corrupted
+DATAINPUT=kaworockt.xlsx
+
 # Do verbose output; e.g. print everything to console.
 VERBOSE=0
 
