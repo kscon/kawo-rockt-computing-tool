@@ -10,8 +10,11 @@ def main():
     # read config file
     Options = readconfig.read_config()
 
+    speisen = ['vorspeise', 'hauptspeise', 'nachspeise']
+    kawos = ['1', '2', '3']
+
     # fetch input files
-    teams, zimmer, unvertraeglichkeiten, speisen, vorspeise, hauptspeise, nachspeise, kawo, kawos \
+    teams, zimmer, unvertraeglichkeiten, vorspeise, hauptspeise, nachspeise, kawo \
         = kaworockt_testdata.get_input()
 
     # do preprocessing

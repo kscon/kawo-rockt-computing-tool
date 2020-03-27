@@ -2,16 +2,19 @@ import pandas as pd
 
 
 def get_input():
-    dframe = pd.read_excel('input/kaworockt_data.xlsx')
+    dataframe = pd.read_excel('input/kaworockt_data.xlsx')
     # dframe.columns = ['teams', 'zimmer', 'vorspeise', 'hauptspeise', 'nachspeise', 'kawo']
-    dframe2 = dframe.set_index('teams', drop=False)
+    inputdata = dataframe.set_index('teams', drop=False)
 
-    teams = dframe2.index.values.tolist()
+    teams = inputdata.index.values.tolist()
 
-    data = dframe2.to_dict('series')
+    data = inputdata.to_dict('series')
 
     data_zimmer = data['zimmer']
     dict_zimmer = data_zimmer.to_dict()
+
+    data_unvertraeglichkeiten = data['unvertraeglichkeiten']
+    dict_unvertraeglichkeiten = data_unvertraeglichkeiten.to_dict()
 
     data_vorspeise = data['vorspeise']
     dict_vorspeise = data_vorspeise.to_dict()
@@ -22,6 +25,7 @@ def get_input():
     data_nachspeise = data['nachspeise']
     dict_nachspeise = data_nachspeise.to_dict()
 
-    print(dict_nachspeise)
+    data_kawo = data['kawo']
+    dict_kawo = data_kawo.to_dict()
 
-    return teams, zimmer, speisen, vorspeise, hauptspeise, nachspeise, kawo, kawos
+    return teams, dict_zimmer, dict_unvertraeglichkeiten, dict_vorspeise, dict_hauptspeise, dict_nachspeise, dict_kawo
