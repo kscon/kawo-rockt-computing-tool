@@ -1,7 +1,7 @@
 # This file is used to read the "CONFIG.txt" file and set its options.
 
 def read_config():
-    Options_list = {}
+    Options_list = {'verbose': 0, 'datainput': ''}
     print("##### OPTIONS: #####")
     try:
         with open("CONFIG.txt", 'r') as configfile:
@@ -14,12 +14,13 @@ def read_config():
 
                 if line_string[0:7] == "verbose":
                     if line_string[8] == '1':
-                        Options_list['verbose'] = 1
+                        Options_list.update(verbose=1)
                         print("Verbose mode active")
                     else:
                         print("Verbose mode inactive")
-                elif line_string[0:10] == 'datainput':
-                    inputfilename = line_string[11:]
+                elif line_string[0:9] == 'datainput':
+                    inputfilename = line_string[10:]
+                    inputfilename = inputfilename[:-1]
                     Options_list.update(datainput=inputfilename)
 
                 else:

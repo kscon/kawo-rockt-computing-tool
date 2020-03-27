@@ -1,9 +1,13 @@
 import pandas as pd
 
 
-def get_input():
-    dataframe = pd.read_excel('input/kaworockt_data.xlsx')
-    # dframe.columns = ['teams', 'zimmer', 'vorspeise', 'hauptspeise', 'nachspeise', 'kawo']
+def get_input(options):
+    filename = options['datainput']
+    print(filename)
+
+    path_of_file = 'input/' + filename
+
+    dataframe = pd.read_excel(path_of_file)
     inputdata = dataframe.set_index('teams', drop=False)
 
     teams = inputdata.index.values.tolist()

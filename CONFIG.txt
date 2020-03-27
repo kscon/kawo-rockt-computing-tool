@@ -5,8 +5,7 @@
 
 # Give name of the input file placed in input folder. 
 # WARNING: Make sure the column names do match the expecteted strings, otherwise data may be corrupted
-DATAINPUT=kaworockt.xlsx
+DATAINPUT=kaworockt_data.xlsx
 
 # Do verbose output; e.g. print everything to console.
 VERBOSE=0
-

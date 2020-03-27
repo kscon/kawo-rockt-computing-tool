@@ -3,19 +3,20 @@ import postprocessing
 import preprocessing
 import solvemodel
 import readconfig
+import fetchinput
 from input import kaworockt_testdata
 
 
 def main():
     # read config file
-    Options = readconfig.read_config()
+    options = readconfig.read_config()
 
     speisen = ['vorspeise', 'hauptspeise', 'nachspeise']
     kawos = ['1', '2', '3']
 
     # fetch input files
     teams, zimmer, unvertraeglichkeiten, vorspeise, hauptspeise, nachspeise, kawo \
-        = kaworockt_testdata.get_input()
+        = fetchinput.get_input(options)
 
     # do preprocessing
     p, kawo_bin, number_of_teams = preprocessing.preprocessing(teams, zimmer, speisen, vorspeise, hauptspeise,
