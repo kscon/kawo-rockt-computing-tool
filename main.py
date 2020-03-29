@@ -13,7 +13,7 @@ def main():
     kawos = ['1', '2', '3']
 
     # fetch input files
-    teams, zimmer, unvertraeglichkeiten, vorspeise, hauptspeise, nachspeise, kawo \
+    teams, zimmer, unvertraeglichkeiten, vorspeise, hauptspeise, nachspeise, kawo, email \
         = fetchinput.get_input(options)
 
     # do preprocessing
@@ -24,7 +24,8 @@ def main():
     x, y, mc, tm, c, d = solvemodel.solve(teams, zimmer, speisen, p, kawo_bin, kawos, number_of_teams, options)
 
     # do postprocessing and visualization
-    postprocessing.postprocessing(options, teams, speisen, zimmer, kawo, unvertraeglichkeiten, x, y, p, mc, tm, c, d)
+    postprocessing.postprocessing(options, teams, speisen, zimmer, kawo, unvertraeglichkeiten, email, x, y, p, mc, tm,
+                                  c, d)
 
 
 if __name__ == '__main__':

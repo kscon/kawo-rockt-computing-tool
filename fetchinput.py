@@ -8,7 +8,7 @@ def get_input(options):
     path_of_file = 'input/' + filename
 
     dataframe = pd.read_excel(path_of_file)
-    inputdata = dataframe.set_index('teams', drop=False)
+    inputdata = dataframe.set_index('team', drop=False)
 
     teams = inputdata.index.values.tolist()
 
@@ -32,4 +32,7 @@ def get_input(options):
     data_kawo = data['kawo']
     dict_kawo = data_kawo.to_dict()
 
-    return teams, dict_zimmer, dict_unvertraeglichkeiten, dict_vorspeise, dict_hauptspeise, dict_nachspeise, dict_kawo
+    data_email = data['email']
+    dict_email = data_email.to_dict()
+
+    return teams, dict_zimmer, dict_unvertraeglichkeiten, dict_vorspeise, dict_hauptspeise, dict_nachspeise, dict_kawo, dict_email

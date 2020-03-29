@@ -1,14 +1,9 @@
 import visualizeoutput
-import os, copy
-
-options = {}
+import os
 
 
-def postprocessing(option_dict, teams, speisen, zimmer, kawo, unvertraeglichkeiten, x, y, p, mc, tm, c, d):
+def postprocessing(options, teams, speisen, zimmer, kawo, unvertraeglichkeiten, email, x, y, p, mc, tm, c, d):
     print("##### POST PROCESSING #####\n")
-
-    global options
-    options = copy.deepcopy(option_dict)
 
     # print analyses of distribution result
     print_teams_not_cooking_preferred_dish(p, speisen, teams, y)
@@ -20,9 +15,11 @@ def postprocessing(option_dict, teams, speisen, zimmer, kawo, unvertraeglichkeit
 
     # print team dependent data:
     prepare_output_directory()
-    write_team_dishes(speisen, teams, y)
+    write_team_dishes(speisen, teams, y, email)
     write_teams_guests(speisen, teams, unvertraeglichkeiten, x)
     write_teams_route(speisen, teams, zimmer, kawo, x)
+
+    print('##### ----- #####')
 
 
 def prepare_output_directory():
@@ -71,7 +68,7 @@ def write_teams_guests(speisen, teams, unvertraeglichkeiten, x):
     print("")
 
 
-def write_team_dishes(speisen, teams, y):
+def write_team_dishes(speisen, teams, y, email):
     # print("--- Welches Team kocht welchen Gang ---")
     for i in teams:
         directory_string = "output/team_output/" + str(i) + ".txt"
@@ -80,6 +77,7 @@ def write_team_dishes(speisen, teams, y):
             if y[i, s] > 0.5:
                 if options['verbose'] == 1:
                     print('Es kocht Team %s den Gang %s.' % (i, s))
+                outfile.write(email[i] + '\n')
                 tmp_output_string = "Es kocht Team " + str(i) + " den Gang " + str(s) + "\n"
                 outfile.write(tmp_output_string)
     print("")
