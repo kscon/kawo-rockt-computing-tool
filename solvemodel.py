@@ -21,7 +21,7 @@ def store_variable_values(teams, speisen, x, y, mc, tm, c, d):
                 tm[i, j] = tm[i, j].x
 
 
-def solve(teams, zimmer, speisen, p, kawo_bin, kawos, number_of_teams):
+def solve(teams, zimmer, speisen, p, kawo_bin, kawos, number_of_teams, options):
     model = Model("Kawo3Rockt!")
 
     model.modelsense = GRB.MINIMIZE

@@ -28,6 +28,5 @@ def read_config():
         return Options_list
 
     except FileNotFoundError:
-        print('Warning: No configuration file "CONFIG.txt" found. Default values are used (This can lead to'
-              'undesired behaviour!')
+        print('Warning: No configuration file "CONFIG.txt" found. Default values are used ')
         return Options_list

@@ -4,8 +4,6 @@ import preprocessing
 import solvemodel
 import readconfig
 import fetchinput
-from input import kaworockt_testdata
-
 
 def main():
     # read config file
@@ -20,13 +18,13 @@ def main():
 
     # do preprocessing
     p, kawo_bin, number_of_teams = preprocessing.preprocessing(teams, zimmer, speisen, vorspeise, hauptspeise,
-                                                               nachspeise, kawo, kawos)
+                                                               nachspeise, kawo, kawos, options)
 
     # solve the model
-    x, y, mc, tm, c, d = solvemodel.solve(teams, zimmer, speisen, p, kawo_bin, kawos, number_of_teams)
+    x, y, mc, tm, c, d = solvemodel.solve(teams, zimmer, speisen, p, kawo_bin, kawos, number_of_teams, options)
 
     # do postprocessing and visualization
-    postprocessing.postprocessing(Options, teams, speisen, zimmer, kawo, unvertraeglichkeiten, x, y, p, mc, tm, c, d)
+    postprocessing.postprocessing(options, teams, speisen, zimmer, kawo, unvertraeglichkeiten, x, y, p, mc, tm, c, d)
 
 
 if __name__ == '__main__':
