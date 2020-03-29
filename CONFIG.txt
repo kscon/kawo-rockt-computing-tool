@@ -1,11 +1,34 @@
 # This is a config file for the "Kawo-Rockt"-route computing tool.
 # Lines that start with a # are comments and will not be read. The list of options can be found TODO
-# Every option needs the format "<option_name> = <option_value>", where <option_value> should be "1"
-# for activating and "0" for deactivating.
+# Every option needs the format "<option_name> = <option_value>".
 
 # Give name of the input file placed in input folder. 
-# WARNING: Make sure the column names do match the expecteted strings, otherwise data may be corrupted
+# WARNING: Make sure the column names do match the expected strings, otherwise data may be corrupted
 DATAINPUT=kaworockt_data.xlsx
 
 # Do verbose output; e.g. print everything to console.
 VERBOSE=0
+
+# Logging Level
+LOGGING=0
+
+# Write Log to outputfile
+OUTPUTFILELOG=0
+
+# Heuristics Options
+HEURISTIC=0
+
+# Kawo Option
+NOTONEKAWO=1
+
+## Solve Computation Option:
+# Meet team twice prevention option
+MT2=1
+
+# Meet all Kawos option
+MAK=1
+
+
+
+
+

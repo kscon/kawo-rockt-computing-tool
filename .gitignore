@@ -3,6 +3,7 @@
 
 #Project based
 input/kaworockt_data.py
+input/*.xlsx
 output/team_output/*
 output/*.pdf
 
