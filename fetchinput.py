@@ -32,8 +32,8 @@ def get_input(options):
         data_nachspeise = data['nachspeise']
         dict_nachspeise = data_nachspeise.to_dict()
 
-    data_kawo = data['kawo']
-    dict_kawo = data_kawo.to_dict()
+        data_kawo = data['kawo']
+        dict_kawo = data_kawo.to_dict()
 
         data_email = data['email']
         dict_email = data_email.to_dict()
@@ -45,6 +45,6 @@ def get_input(options):
         print('Reading old excel files (xls) is not implemented yet :(')
 
     speisen = ['vorspeise', 'hauptspeise', 'nachspeise']
-    dorms = ['1', '2', '3']
+    kawos = ['1', '2', '3']
 
-    return teams, dict_zimmer, dict_unvertraeglichkeiten, dict_vorspeise, dict_hauptspeise, dict_nachspeise, dict_dorm, dict_email, speisen, dorms
+    return teams, dict_zimmer, dict_unvertraeglichkeiten, dict_vorspeise, dict_hauptspeise, dict_nachspeise, dict_kawo, dict_email, speisen, kawos
