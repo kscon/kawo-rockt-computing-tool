@@ -1,7 +1,7 @@
 # This file is used to read the "CONFIG.txt" file and set its options.
 
 def read_config():
-    Options_list = {'verbose': 0, 'datainput': '', 'logging': 0,
+    Options_list = {'verbose': 1, 'datainput': '', 'logging': 0,
                     'mtod': 1, 'visualize': 1, 'mntt': 1, 'mad': 1,
                     'heuristic': 0, 'pdw': 0, 'madw': 1, 'mnttw': 2}
     print("##### OPTIONS: #####")
