@@ -1,7 +1,11 @@
 def preprocessing(teams, zimmer, speisen, vorspeise, hauptspeise, nachspeise, kawo, kawos, options):
-    num_of_teams = number_of_teams(teams)
-    check_room_conflicts_maximum(teams, zimmer)
-    count_teams_kawo_origin(teams, kawo)
+    if options['verbose'] != 0:
+        print('\n##### PREPROCESSING #####')
+        num_of_teams = number_of_teams(teams)
+        check_room_conflicts_maximum(teams, zimmer)
+        count_teams_kawo_origin(teams, kawo)
+        print('##### End of Preprocessing #####\n')
+
     kawo_bin = set_kawo_bin(teams, kawo, kawos)
     p = calculate_preferences(teams, speisen, vorspeise, hauptspeise, nachspeise)
 
@@ -11,8 +15,7 @@ def number_of_teams(teams):
     counter = 0
     for i in teams:
         counter += 1
-    print("\nEs gibt %i teilnehmende Teams" % (counter))
-    print("")
+    print("Es gibt %i teilnehmende Teams" % (counter))
     return counter
 
 
@@ -40,7 +43,7 @@ def count_teams_kawo_origin(teams, kawo):
             count_k2 = count_k2 + 1
         elif (kawo[i] == 3):
             count_k3 = count_k3 + 1
-    print("Es gibt %i Kawo1, %i Kawo2 und %i Kawo3 Teams.\n" % (count_k1, count_k2, count_k3))
+    print("Es gibt %i Kawo1, %i Kawo2 und %i Kawo3 Teams" % (count_k1, count_k2, count_k3))
 
 
 def set_kawo_bin(teams, kawo, kawos):
