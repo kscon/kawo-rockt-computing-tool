@@ -139,6 +139,8 @@ def read_config():
                         flag = 1
 
                 assert (flag == 0)
+
+        print("##### End of Options #####")
         return Options_list
 
     except FileNotFoundError:
