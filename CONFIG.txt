@@ -2,33 +2,36 @@
 # Lines that start with a # are comments and will not be read. The list of options can be found TODO
 # Every option needs the format "<option_name> = <option_value>".
 
+## General Options
 # Give name of the input file placed in input folder. 
 # WARNING: Make sure the column names do match the expected strings, otherwise data may be corrupted
 DATAINPUT=kaworockt_data.xlsx
 
-# Do verbose output; e.g. print everything to console.
+# Level of detail for verbose output in console. Values between 0 and 2 possible
 VERBOSE=0
 
-# Logging Level
+# Level of detail for logs written to a logfile. Values between 0 and 2 possible
 LOGGING=0
 
-# Write Log to outputfile
-OUTPUTFILELOG=0
+# More than one dorm participating option
+MORE THAN ONE DORM=1
 
-# Heuristics Options
-HEURISTIC=0
-
-# Kawo Option
-NOTONEKAWO=1
+# Visualization Option
+VISUALIZE=1
 
 ## Solve Computation Option:
 # Meet team twice prevention option
-MT2=1
+MEET NO TEAM TWICE=1
 
-# Meet all Kawos option
-MAK=1
+# Meet all dorms option (only does its effect when "MORE THAN ONE DORM" option is set)
+MEET ALL DORMS=1
 
+# Heuristics Options
+HEURISTIC SOLUTION=0
 
-
-
-
+# Priority order of attributes to optimize. 0 means highest priority, 2 means lowest priority. A low
+# priority attribute might be violated to not violate a high priority attribute. It is encouraged to keep
+# the default order.
+PREFERRED DISH WEIGHT=0
+MEET ALL DORMS WEIGHT=1
+MEET NO TEAM TWICE WEIGHT=2
