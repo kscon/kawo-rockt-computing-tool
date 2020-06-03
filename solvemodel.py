@@ -21,18 +21,23 @@ def store_variable_values(teams, speisen, x, y, mc, tm, c, d):
                 tm[i, j] = tm[i, j].x
 
 
+def calcpriority(x):
+    if x == 0:
+        return 1
+    elif x == 1:
+        return 200
+    elif x == 2:
+        return 400
+    else:
+        return 400
+
+
 def solve(teams, zimmer, speisen, p, kawo_bin, kawos, number_of_teams, options):
     model = Model("Kawo3Rockt!")
 
-    verbose = options['verbose']
-    if verbose >= 1:
-        verbose = 1
-    else:
-        verbose = 0
-
     # CONFIG
-    model.setParam('LogToConsole', verbose)
-    model.setParam('TimeLimit', 30 * 60)
+    model.setParam('TimeLimit', 10 * 60)
+    model.setParam('MIPFocus', 0)
 
     model.modelsense = GRB.MINIMIZE
 
@@ -76,13 +81,17 @@ def solve(teams, zimmer, speisen, p, kawo_bin, kawos, number_of_teams, options):
             if i != j:
                 tm[i, j] = model.addVar(name="tm_" + i + "_" + j, vtype=GRB.BINARY)
 
+    pdw = calcpriority(options['pdw'])
+    madw = calcpriority(options['madw'])
+    mnttw = calcpriority(options['mnttw'])
+
     # objective function:
     model.setObjective(
         100 * quicksum(c[i, s] for i in teams for s in speisen)  # amount of teams having 3 other teams as guests
         + 100 * quicksum(d[i, s] for i in teams for s in speisen)  # amount of teams having 1 other team as guests
-        + quicksum(p[i, s] * y[i, s] for i in teams for s in speisen)  # teams cooking their preferred dish
-        + 400 * quicksum(mc[i, j] for i in teams for j in teams if i < j)  # punish if two teams meet twice
-        + 200 * quicksum(tm[i, j] for i in teams for j in teams if i < j)  # punish if a team does not meet teams of
+        + pdw * quicksum(p[i, s] * y[i, s] for i in teams for s in speisen)  # teams cooking their preferred dish
+        + mnttw * quicksum(mc[i, j] for i in teams for j in teams if i < j)  # punish if two teams meet twice
+        + madw * quicksum(tm[i, j] for i in teams for j in teams if i < j)  # punish if a team does not meet teams of
         # every other Kawo
     )
 
@@ -135,18 +144,19 @@ def solve(teams, zimmer, speisen, p, kawo_bin, kawos, number_of_teams, options):
                                 if s != ss:
                                     model.addConstr(x[g, i, s] + x[g, j, s] <= 2 - x[i, j, ss] + mc[i, j])
 
-    # 6b. Meeting a team at a dish from a third team implies do not meet at a fourth team
-    for i in teams:
-        for j in teams:
-            if i < j:
-                for g in teams:
-                    if g != i and g != j:
-                        for s in speisen:
-                            for gg in teams:
-                                for ss in speisen:
-                                    if g < gg and i != gg and j != gg and s != ss:
-                                        model.addConstr(
-                                            x[g, i, s] + x[g, j, s] <= 3 - (x[gg, i, ss] + x[gg, j, ss]) + mc[i, j])
+    if not options['heuristic']:
+        # 6b. Meeting a team at a dish from a third team implies do not meet at a fourth team
+        for i in teams:
+            for j in teams:
+                if i < j:
+                    for g in teams:
+                        if g != i and g != j:
+                            for s in speisen:
+                                for gg in teams:
+                                    for ss in speisen:
+                                        if g < gg and i != gg and j != gg and s != ss:
+                                            model.addConstr(
+                                                x[g, i, s] + x[g, j, s] <= 3 - (x[gg, i, ss] + x[gg, j, ss]) + mc[i, j])
 
     # 6c. If a team i has cooked for a team j, prevent that team j cooks for team i
     for i in teams:
@@ -193,11 +203,6 @@ def solve(teams, zimmer, speisen, p, kawo_bin, kawos, number_of_teams, options):
     # Optimize the model
     model.optimize()
 
-    if model.status == GRB.OPTIMAL or True:
-        print('\n Optimal solution value found: %g\n' % model.ObjVal)
-        store_variable_values(teams, speisen, x, y, mc, tm, c, d)
-        return x, y, mc, tm, c, d
-
-    else:
-        print('No Solution found! Status: %i' % (model.status))
-    return model
+    print('\n Optimal solution value found: %g\n' % model.ObjVal)
+    store_variable_values(teams, speisen, x, y, mc, tm, c, d)
+    return x, y, mc, tm, c, d
