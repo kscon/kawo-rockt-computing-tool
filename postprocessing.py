@@ -15,9 +15,9 @@ def postprocessing(options, teams, speisen, zimmer, kawo, unvertraeglichkeiten, 
 
     # print team dependent data:
     prepare_output_directory()
-    write_team_dishes(speisen, teams, y, email)
-    write_teams_guests(speisen, teams, unvertraeglichkeiten, x)
-    write_teams_route(speisen, teams, zimmer, kawo, x)
+    write_team_dishes(options, speisen, teams, y, email)
+    write_teams_guests(options, speisen, teams, unvertraeglichkeiten, x)
+    write_teams_route(options, speisen, teams, zimmer, kawo, x)
 
     print('##### ----- #####')
 
@@ -30,7 +30,7 @@ def prepare_output_directory():
             os.remove(os.path.join('output/team_output', file))
 
 
-def write_teams_route(speisen, teams, zimmer, kawo, x):
+def write_teams_route(options, speisen, teams, zimmer, kawo, x):
     # print("--- Wie sieht die Route eines Teams aus ---")
     for j in teams:
         directory_string = "output/team_output/" + str(j) + ".txt"
@@ -48,7 +48,7 @@ def write_teams_route(speisen, teams, zimmer, kawo, x):
     print("")
 
 
-def write_teams_guests(speisen, teams, unvertraeglichkeiten, x):
+def write_teams_guests(options, speisen, teams, unvertraeglichkeiten, x):
     # print("---Welche Gäste hat ein Team für seinen Gang ---")
     for s in speisen:
         for i in teams:
@@ -68,7 +68,7 @@ def write_teams_guests(speisen, teams, unvertraeglichkeiten, x):
     print("")
 
 
-def write_team_dishes(speisen, teams, y, email):
+def write_team_dishes(options, speisen, teams, y, email):
     # print("--- Welches Team kocht welchen Gang ---")
     for i in teams:
         directory_string = "output/team_output/" + str(i) + ".txt"
