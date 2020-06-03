@@ -6,8 +6,7 @@ Created on Sat Jun  9 18:57:13 2018
 """
 from gurobipy import *
 
-
-def get_input():
+def get_input(options):
     teams, zimmer, unvertraeglichkeiten, vorspeise, hauptspeise, nachspeise, kawo = multidict({
         'A': ['1', 'Fleisch', 1, 0, 2, 3],
         'B': ['3514', 'Werthers Echte', 0, 2, 2, 1],
@@ -23,34 +22,34 @@ def get_input():
         'L': ['4304', 'Soja', 2, 0, 2, 2],
         'M': ['1302', '', 0, 2, 1, 3],
         'N': ['3310', 'Ananas', 2, 0, 2, 1],
-        'O': ['1512', 'Fleisch', 2, 0, 0, 3], })
-    """    'P': ['1111', 'Hirse',                  2, 1, 0, 2], 
-        'Q': ['2113', 'Marmelade',              0, 2, 2, 3], 
-        'R': ['1576', '',                       2, 1, 0, 3], 
-        'S': ['4311', 'Fleisch',                2, 1, 0, 1], 
-        'T': ['1212', 'Schmörebröt',            2, 2, 0, 1], 
-        'U': ['6413', 'Snickers',               0, 2, 0, 2], 
-        'V': ['1214', '',                       2, 2, 0, 2], 
-        'W': ['1510', '',                       0, 2, 0, 1],
-        'X': ['1581', 'Ananas',                 2, 0, 2, 3],  
-        'Y': ['4513', 'Fleisch',                2, 1, 0, 3], 
-        'Z': ['3468', 'Hirse',                  0, 1, 1, 2],
-        'AA': ['1231', 'Marmelade',             0, 2, 2, 1], 
-        'AB': ['2101', '',                      2, 1, 0, 2], 
-        'AC': ['1214', 'Fleisch',               2, 0, 2, 3], 
-        'AD': ['3457', 'Schmörebröt',           2, 1, 0, 1], 
-        'AE': ['3311', 'Snickers',              0, 1, 1, 1], 
-        'AF': ['4345', '',                      1, 1, 0, 2], 
-        'AG': ['1510', '',                      0, 2, 0, 3],
-        'AH': ['4311', 'Fleisch',                2, 1, 0, 3], 
-        'AI': ['1212', 'Schmörebröt',            2, 2, 0, 1], 
-        'AJ': ['6413', 'Snickers',               0, 2, 0, 2], 
-        'AK': ['4564', '',                       2, 2, 0, 2], 
-        'AL': ['4584', '',                       0, 2, 0, 2],
-        'AM': ['1581', 'Ananas',                 2, 0, 2, 3],  
-        'AN': ['4513', 'Fleisch',                2, 1, 0, 3], 
+        'O': ['1512', 'Fleisch', 2, 0, 0, 3],
+        'P': ['1111', 'Hirse', 2, 1, 0, 2],
+        'Q': ['2113', 'Marmelade', 0, 2, 2, 3],
+        'R': ['1576', '', 2, 1, 0, 3],
+        'S': ['4311', 'Fleisch', 2, 1, 0, 1],
+        'T': ['1212', 'Schmörebröt', 2, 2, 0, 1],
+        'U': ['6413', 'Snickers', 0, 2, 0, 2],
+        'V': ['1214', '', 2, 2, 0, 2],
+        'W': ['1510', '', 0, 2, 0, 1],
+        'X': ['1581', 'Ananas', 2, 0, 2, 3],
+        'Y': ['4513', 'Fleisch', 2, 1, 0, 3],
+        'Z': ['3468', 'Hirse', 0, 1, 1, 2],
+        'AA': ['1231', 'Marmelade', 0, 2, 2, 1],
+        'AB': ['2101', '', 2, 1, 0, 2],
+        'AC': ['1214', 'Fleisch', 2, 0, 2, 3],
+        'AD': ['3457', 'Schmörebröt', 2, 1, 0, 1],
+        'AE': ['3311', 'Snickers', 0, 1, 1, 1],
+        'AF': ['4345', '', 1, 1, 0, 2],
+        'AG': ['1510', '', 0, 2, 0, 3],
+        'AH': ['4311', 'Fleisch', 2, 1, 0, 3],
+        'AI': ['1212', 'Schmörebröt', 2, 2, 0, 1],
+        'AJ': ['6413', 'Snickers', 0, 2, 0, 2],
+        'AK': ['4564', '', 2, 2, 0, 2],
+        'AL': ['4584', '', 0, 2, 0, 2],
+        'AM': ['1581', 'Ananas', 2, 0, 2, 3], })
+    """    'AN': ['4513', 'Fleisch',                2, 1, 0, 3], 
         'AO': ['1111', 'Hirse',                  0, 1, 1, 2], 
-        'AP': ['4745', 'Marmelade',             0, 2, 2, 3], })
+        'AP': ['4745', 'Marmelade',             0, 2, 2, 3], 
         'AQ': ['2101', '',                      2, 1, 0, 2], 
         'AR': ['4568', 'Fleisch',               2, 0, 2, 3], 
         'AS': ['1212', 'Schmörebröt',           2, 1, 0, 1], 
@@ -116,5 +115,8 @@ def get_input():
     speisen = ['vorspeise', 'hauptspeise', 'nachspeise']
     kawos = ['1', '2', '3']
 
+    email = {}
+    for i in teams:
+        email[i] = ''
 
-    return (teams, zimmer, unvertraeglichkeiten, speisen, vorspeise, hauptspeise, nachspeise, kawo, kawos)
+    return teams, zimmer, unvertraeglichkeiten, vorspeise, hauptspeise, nachspeise, kawo, email, speisen, kawos
