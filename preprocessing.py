@@ -1,10 +1,19 @@
 def preprocessing(teams, zimmer, speisen, vorspeise, hauptspeise, nachspeise, kawo, kawos, options):
-    if options['verbose'] != 0:
-        print('\n##### PREPROCESSING #####')
-        num_of_teams = number_of_teams(teams)
-        check_room_conflicts_maximum(teams, zimmer)
-        count_teams_kawo_origin(teams, kawo)
-        print('##### End of Preprocessing #####\n')
+    global opt
+    opt = options
+    log('\n##### PREPROCESSING #####')
+
+    num_of_teams = number_of_teams(teams)
+    log("Es gibt %i teilnehmende Teams" % (num_of_teams))
+
+    number = check_room_conflicts_maximum(teams, zimmer)
+    if number > 0:
+        log("Es gibt zu viele Teams mit Zimmernummer %s" % (number))
+
+    count_k1, count_k2, count_k3 = count_teams_kawo_origin(teams, kawo)
+    log("Es gibt %i Kawo1, %i Kawo2 und %i Kawo3 Teams" % (count_k1, count_k2, count_k3))
+
+    log('##### End of Preprocessing #####\n')
 
     kawo_bin = set_kawo_bin(teams, kawo, kawos)
     p = calculate_preferences(teams, speisen, vorspeise, hauptspeise, nachspeise)
@@ -12,12 +21,7 @@ def preprocessing(teams, zimmer, speisen, vorspeise, hauptspeise, nachspeise, ka
     return p, kawo_bin, num_of_teams
 
 def number_of_teams(teams):
-    counter = 0
-    for i in teams:
-        counter += 1
-    print("Es gibt %i teilnehmende Teams" % (counter))
-    return counter
-
+    return len(teams)
 
 def check_room_conflicts_maximum(teams, zimmer):
     global i
@@ -28,8 +32,8 @@ def check_room_conflicts_maximum(teams, zimmer):
             if i != j and number == zimmer[j]:
                 counter = counter + 1
         if counter > 3:
-            print("Es gibt zu viele Teams mit Zimmernummer %s" % (number))
-
+            return number
+    return 0
 
 def count_teams_kawo_origin(teams, kawo):
     global i
@@ -43,8 +47,7 @@ def count_teams_kawo_origin(teams, kawo):
             count_k2 = count_k2 + 1
         elif (kawo[i] == 3):
             count_k3 = count_k3 + 1
-    print("Es gibt %i Kawo1, %i Kawo2 und %i Kawo3 Teams" % (count_k1, count_k2, count_k3))
-
+    return count_k1, count_k2, count_k3
 
 def set_kawo_bin(teams, kawo, kawos):
     global i
@@ -66,3 +69,11 @@ def calculate_preferences(teams, speisen, vorspeise, hauptspeise, nachspeise):
             else:
                 p[i, s] = 10 ** nachspeise[i]
     return p
+
+
+def log(s):
+    print(s)
+    if opt['writeoutput']:
+        directory_string = "output/log.txt"
+        outfile = open(directory_string, "a")
+        outfile.write(s)

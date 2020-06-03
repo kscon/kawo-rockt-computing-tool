@@ -7,7 +7,7 @@
 # WARNING: Make sure the column names do match the expected strings, otherwise data may be corrupted
 DATAINPUT=kaworockt_data.xlsx
 
-# Level of detail for verbose output in console. Possible values are 0 and 1
+# Write output to console. Possible values are 0 and 1
 WRITEOUTPUT=1
 
 # Visualization Option
