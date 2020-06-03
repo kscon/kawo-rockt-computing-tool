@@ -12,13 +12,13 @@ def postprocessing(options, teams, speisen, zimmer, kawo, unvertraeglichkeiten, 
     count_1k, count_2k, count_3k = print_kawo_distribution_per_dish(kawo, speisen, teams, x, y)
     # visualizeoutput.visualize(count_1k, count_2k, count_3k)
     print_kawo_distribution_for_team(teams, speisen, kawo, x, y)
-    print_team_cooks_not_for_three(teams, speisen, x, y, c, d)
+    print_team_cooks_not_for_three(teams, speisen, x, c, d)
 
     # print team dependent data:
     prepare_output_directory()
-    write_team_dishes(options, speisen, teams, y, email)
-    write_teams_guests(options, speisen, teams, unvertraeglichkeiten, x)
-    write_teams_route(options, speisen, teams, zimmer, kawo, x)
+    write_team_dishes(speisen, teams, y, email)
+    write_teams_guests(speisen, teams, unvertraeglichkeiten, x)
+    write_teams_route(speisen, teams, zimmer, kawo, x)
 
     log('##### ----- #####')
 
@@ -31,7 +31,7 @@ def prepare_output_directory():
             os.remove(os.path.join('output/team_output', file))
 
 
-def write_teams_route(options, speisen, teams, zimmer, kawo, x):
+def write_teams_route(speisen, teams, zimmer, kawo, x):
     # print("--- Wie sieht die Route eines Teams aus ---")
     for j in teams:
         directory_string = "output/team_output/" + str(j) + ".txt"
@@ -48,7 +48,7 @@ def write_teams_route(options, speisen, teams, zimmer, kawo, x):
     log("")
 
 
-def write_teams_guests(options, speisen, teams, unvertraeglichkeiten, x):
+def write_teams_guests(speisen, teams, unvertraeglichkeiten, x):
     # print("---Welche Gäste hat ein Team für seinen Gang ---")
     for s in speisen:
         for i in teams:
@@ -67,7 +67,7 @@ def write_teams_guests(options, speisen, teams, unvertraeglichkeiten, x):
     log("")
 
 
-def write_team_dishes(options, speisen, teams, y, email):
+def write_team_dishes(speisen, teams, y, email):
     # print("--- Welches Team kocht welchen Gang ---")
     for i in teams:
         directory_string = "output/team_output/" + str(i) + ".txt"
@@ -144,7 +144,7 @@ def print_teams_not_cooking_preferred_dish(p, speisen, teams, y):
     print("")
 
 
-def print_team_cooks_not_for_three(teams, speisen, x, y, c, d):
+def print_team_cooks_not_for_three(teams, speisen, x, c, d):
     log("")
     for i in teams:
         for s in speisen:
@@ -183,7 +183,7 @@ def print_kawo_distribution_for_team(teams, speisen, kawo, x, y):
                 i, kawo[i], A.count(1), A.count(2), A.count(3)))
 
 
-def print_teams_met(teams, speisen, x, y, tm):
+def print_teams_met(teams, tm):
     log("")
     for i in teams:
         for j in teams:
