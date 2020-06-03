@@ -20,7 +20,7 @@ def read_config():
                     if line_list[1] == '0':
                         Options_list.update(writeoutput=0)
                         print("Output is not written")
-                    elif line_list[8] == '1':
+                    elif line_list[1] == '1':
                         Options_list.update(writeoutput=1)
                         print("Output is written")
                     else:
