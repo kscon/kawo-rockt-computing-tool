@@ -24,8 +24,10 @@ def preprocessing(teams, zimmer, speisen, vorspeise, hauptspeise, nachspeise, ka
 
     return p, kawo_bin, num_of_teams
 
+
 def number_of_teams(teams):
     return len(teams)
+
 
 def check_room_conflicts_maximum(teams, zimmer):
     global i
@@ -38,6 +40,7 @@ def check_room_conflicts_maximum(teams, zimmer):
         if counter > 3:
             return number
     return 0
+
 
 def count_teams_kawo_origin(teams, kawo):
     global i
@@ -53,6 +56,7 @@ def count_teams_kawo_origin(teams, kawo):
             count_k3 = count_k3 + 1
     return count_k1, count_k2, count_k3
 
+
 def set_kawo_bin(teams, kawo, kawos):
     global i
     kawo_bin = {(i, k): 0 for i in teams for k in kawos}
@@ -60,6 +64,7 @@ def set_kawo_bin(teams, kawo, kawos):
         k = str(kawo[i])
         kawo_bin[i, k] = 1
     return kawo_bin
+
 
 def calculate_preferences(teams, speisen, vorspeise, hauptspeise, nachspeise):
     p = {(i, s): 100 for i in teams for s in speisen}
