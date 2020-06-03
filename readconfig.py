@@ -1,9 +1,7 @@
 # This file is used to read the "CONFIG.txt" file and set its options.
 
 def read_config():
-    Options_list = {'verbose': 1, 'datainput': '', 'logging': 0,
-                    'mtod': 1, 'visualize': 1, 'mntt': 1, 'mad': 1,
-                    'heuristic': 0, 'pdw': 0, 'madw': 1, 'mnttw': 2}
+    Options_list = {'writeoutput': 1, 'datainput': '', 'visualize': 1, 'heuristic': 0, 'pdw': 0, 'madw': 1, 'mnttw': 2}
     print("##### OPTIONS: #####")
     try:
         with open("CONFIG.txt", 'r') as configfile:
@@ -18,16 +16,13 @@ def read_config():
 
                 line_list = line_string.strip().split('=')
 
-                if line_string[0:7] == "verbose":
-                    if line_string[8] == '0':
-                        Options_list.update(verbose=0)
-                        print("Verbose level set to no output")
-                    elif line_string[8] == '1':
-                        Options_list.update(verbose=1)
-                        print("Verbose level set to important output")
-                    elif line_string[8] == '2':
-                        Options_list.update(verbose=2)
-                        print("Verbose level set to all output")
+                if line_list[0] == "writeoutput":
+                    if line_list[1] == '0':
+                        Options_list.update(writeoutput=0)
+                        print("Output is not written")
+                    elif line_list[8] == '1':
+                        Options_list.update(writeoutput=1)
+                        print("Output is written")
                     else:
                         flag = 1
 
@@ -35,29 +30,6 @@ def read_config():
                     inputfilename = line_string[10:]
                     inputfilename = inputfilename[:-1]
                     Options_list.update(datainput=inputfilename)
-
-                elif line_string[0:7] == "logging":
-                    if line_string[8] == '0':
-                        Options_list.update(logging=0)
-                        print("Logging level set to no output")
-                    elif line_string[8] == '1':
-                        Options_list.update(logging=1)
-                        print("Logging level set to important output")
-                    elif line_string[8] == '2':
-                        Options_list.update(logging=2)
-                        print("Logging level set to all output")
-                    else:
-                        flag = 1
-
-                elif line_list[0] == 'morethanonedorm':
-                    if line_list[1] == '0':
-                        Options_list.update(mtod=0)
-                        print("More than one dorm option inactive")
-                    elif line_list[1] == '1':
-                        Options_list.update(mtod=1)
-                        print("More than one dorm option active")
-                    else:
-                        flag = 1
 
                 elif line_list[0] == 'visualize':
                     if line_list[1] == '0':
@@ -69,27 +41,7 @@ def read_config():
                     else:
                         flag = 1
 
-                elif line_list[0] == 'meetnoteamtwice':
-                    if line_list[1] == '0':
-                        Options_list.update(mntt=0)
-                        print("Meet no team twice option inactive")
-                    elif line_list[1] == '1':
-                        Options_list.update(mntt=1)
-                        print("Meet no team twice option active")
-                    else:
-                        flag = 1
-
-                elif line_list[0] == 'meetalldorms':
-                    if line_list[1] == '0':
-                        Options_list.update(mad=0)
-                        print("Meet all dorms option inactive")
-                    elif line_list[1] == '1':
-                        Options_list.update(mad=1)
-                        print("Meet all dorms option active")
-                    else:
-                        flag = 1
-
-                elif line_list[0] == 'heuristicsolution':
+                elif line_list[0] == 'fastersolution':
                     if line_list[1] == '0':
                         Options_list.update(heuristic=0)
                         print("Heuristic solution finding inactive")
