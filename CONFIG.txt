@@ -14,7 +14,6 @@ WRITEOUTPUT=1
 VISUALIZE=1
 
 ## Solve Computation Option:
-
 # Heuristics Options
 FASTER SOLUTION=0
 
