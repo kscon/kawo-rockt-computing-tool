@@ -13,7 +13,7 @@ def main():
 
     # fetch input files
     teams, zimmer, unvertraeglichkeiten, vorspeise, hauptspeise, nachspeise, kawo, email, speisen, kawos \
-        = kaworockt_testdata.get_input(options)
+        = fetchinput.get_input(options)
 
     # do preprocessing
     p, kawo_bin, number_of_teams = preprocessing.preprocessing(teams, zimmer, speisen, vorspeise, hauptspeise,

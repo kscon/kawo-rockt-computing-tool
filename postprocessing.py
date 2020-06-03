@@ -20,7 +20,7 @@ def postprocessing(options, teams, speisen, zimmer, kawo, unvertraeglichkeiten, 
     write_teams_guests(speisen, teams, unvertraeglichkeiten, x)
     write_teams_route(speisen, teams, zimmer, kawo, x)
 
-    log('##### ----- #####')
+    log('##### End of Post Processing #####')
 
 
 def prepare_output_directory():
@@ -68,7 +68,7 @@ def write_teams_guests(speisen, teams, unvertraeglichkeiten, x):
 
 
 def write_team_dishes(speisen, teams, y, email):
-    # print("--- Welches Team kocht welchen Gang ---")
+    log("--- Welches Team kocht welchen Gang ---")
     for i in teams:
         directory_string = "output/team_output/" + str(i) + ".txt"
         outfile = open(directory_string, "w")
@@ -145,7 +145,7 @@ def print_teams_not_cooking_preferred_dish(p, speisen, teams, y):
 
 
 def print_team_cooks_not_for_three(teams, speisen, x, c, d):
-    log("")
+    log('--- Teams cooking not for three: ---')
     for i in teams:
         for s in speisen:
             if (c[i, s] > 0.5):
@@ -160,9 +160,11 @@ def print_team_cooks_not_for_three(teams, speisen, x, c, d):
                     log("team %s cooks for one team! " % (i))
                 else:
                     log("Something went wrong")
+    log('\n')
 
 
 def print_kawo_distribution_for_team(teams, speisen, kawo, x, y):
+    log('--- Teams not meeting all Kawos ---')
     for i in teams:
         A = []
         for s in speisen:
@@ -181,7 +183,7 @@ def print_kawo_distribution_for_team(teams, speisen, kawo, x, y):
                 A.count(3) == 0 and kawo[i] != 3)):
             log("Team %s (aus dem Kawo%s) trifft auf %i Kawo1 Teams, %i Kawo2 Teams und %i Kawo3 Teams" % (
                 i, kawo[i], A.count(1), A.count(2), A.count(3)))
-
+    log('\n')
 
 def print_teams_met(teams, tm):
     log("")
@@ -196,4 +198,4 @@ def log(s):
     if opt['writeoutput']:
         directory_string = "output/log.txt"
         outfile = open(directory_string, "a")
-        outfile.write(s)
+        outfile.write(s + '\n')

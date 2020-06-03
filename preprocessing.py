@@ -1,6 +1,10 @@
+import os
+
+
 def preprocessing(teams, zimmer, speisen, vorspeise, hauptspeise, nachspeise, kawo, kawos, options):
     global opt
     opt = options
+    os.remove('output/log.txt')
     log('\n##### PREPROCESSING #####')
 
     num_of_teams = number_of_teams(teams)
@@ -76,4 +80,4 @@ def log(s):
     if opt['writeoutput']:
         directory_string = "output/log.txt"
         outfile = open(directory_string, "a")
-        outfile.write(s)
+        outfile.write(s + '\n')
