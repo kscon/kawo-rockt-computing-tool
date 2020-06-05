@@ -32,7 +32,7 @@ def get_input(options):
         data_nachspeise = data['nachspeise']
         dict_nachspeise = data_nachspeise.to_dict()
 
-        data_kawo = data['dorm']
+        data_kawo = data['kawo']
         dict_kawo = data_kawo.to_dict()
 
         data_email = data['email']

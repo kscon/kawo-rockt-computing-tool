@@ -36,7 +36,7 @@ def solve(teams, zimmer, speisen, p, kawo_bin, kawos, number_of_teams, options):
     model = Model("Kawo3Rockt!")
 
     # CONFIG
-    model.setParam('TimeLimit', 10 * 60)
+    model.setParam('TimeLimit', 30 * 60)
     model.setParam('MIPFocus', 0)
 
     model.modelsense = GRB.MINIMIZE
