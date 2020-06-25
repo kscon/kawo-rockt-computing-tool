@@ -45,6 +45,7 @@ def get_input(options):
         print('Reading old excel files (xls) is not implemented yet :(')
 
     speisen = ['vorspeise', 'hauptspeise', 'nachspeise']
-    kawos = ['1', '2', '3']
+    kawos = list(set([str(k) for k in dict_kawo.values()]))
+    print(kawos)
 
     return teams, dict_zimmer, dict_unvertraeglichkeiten, dict_vorspeise, dict_hauptspeise, dict_nachspeise, dict_kawo, dict_email, speisen, kawos
