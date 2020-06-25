@@ -1,5 +1,5 @@
 # This is a config file for the "Kawo-Rockt"-route computing tool.
-# Lines that start with a # are comments and will not be read. The list of options can be found TODO
+# Lines that start with a # are comments and will not be read.
 # Every option needs the format "<option_name> = <option_value>".
 
 ## General Options
@@ -13,13 +13,8 @@ WRITEOUTPUT=1
 # Visualization Option
 VISUALIZE=1
 
-## Solve Computation Option:
-# Heuristics Options
-FASTER SOLUTION=0
-
-# Priority order of attributes to optimize. 0 means highest priority, 2 means lowest priority. A low
+# Priority order of attributes to optimize. 1 means highest priority, 2 means lowest priority. A low
 # priority attribute might be violated to not violate a high priority attribute. It is encouraged to keep
 # the default order.
-PREFERRED DISH WEIGHT=0
 MEET ALL DORMS WEIGHT=1
 MEET NO TEAM TWICE WEIGHT=2
