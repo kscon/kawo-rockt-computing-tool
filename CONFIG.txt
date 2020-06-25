@@ -11,7 +11,7 @@ DATAINPUT=kaworockt_example_data.xlsx
 WRITEOUTPUT=1
 
 # Visualization Option
-VISUALIZE=1
+VISUALIZE=0
 
 # Priority order of attributes to optimize. 1 means highest priority, 2 means lowest priority. A low
 # priority attribute might be violated to not violate a high priority attribute. It is encouraged to keep
