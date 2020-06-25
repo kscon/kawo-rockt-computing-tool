@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from gurobipy import *
 
-
 # store the actual variable values into the dict as gurobi does not do this automatically
 def store_variable_values(teams, speisen, x, y, mc, tm, c, d):
     for i in teams:

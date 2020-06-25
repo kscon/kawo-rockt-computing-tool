@@ -5,7 +5,7 @@
 ## General Options
 # Give name of the input file placed in input folder. 
 # WARNING: Make sure the column names do match the expected strings, otherwise data may be corrupted
-DATAINPUT=kaworockt_data.xlsx
+DATAINPUT=kaworockt_example_data.xlsx
 
 # Write output to console. Possible values are 0 and 1
 WRITEOUTPUT=1

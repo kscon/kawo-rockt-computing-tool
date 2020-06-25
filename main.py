@@ -4,7 +4,9 @@ import preprocessing
 import solvemodel
 import readconfig
 import fetchinput
-from input import kaworockt_data, kaworockt_testdata, kaworockt_testdata2
+
+
+# from input import kaworockt_data, kaworockt_testdata, kaworockt_testdata2
 
 
 def main():
