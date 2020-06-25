@@ -137,9 +137,9 @@ def print_teams_not_cooking_preferred_dish(p, speisen, teams, y):
     log("--- Welches Team kocht nicht seinen präferierten Gang ---")
     for i in teams:
         for s in speisen:
-            if p[i, s] * y[i, s] >= 50:
+            if p[i, s] * y[i, s] >= 0.5:
                 log('Es kocht Team %s seinen am wenigsten präferierten Gang.' % (i))
-            elif p[i, s] * y[i, s] >= 5:
+            elif p[i, s] * y[i, s] >= 0.05:
                 log("Es kocht Team %s seinen zweit-präferierten Gang." % (i))
     print("")
 
@@ -165,6 +165,7 @@ def print_team_cooks_not_for_three(teams, speisen, x, c, d):
 
 def print_kawo_distribution_for_team(teams, speisen, kawo, x, y):
     log('--- Teams not meeting all Kawos ---')
+    counter = 0
     for i in teams:
         A = []
         for s in speisen:
@@ -183,7 +184,10 @@ def print_kawo_distribution_for_team(teams, speisen, kawo, x, y):
                 A.count(3) == 0 and kawo[i] != 3)):
             log("Team %s (aus dem Kawo%s) trifft auf %i Kawo1 Teams, %i Kawo2 Teams und %i Kawo3 Teams" % (
                 i, kawo[i], A.count(1), A.count(2), A.count(3)))
-    log('\n')
+            counter += 1
+    log('Insgesamt gibt es ' + str(counter) + ' Teams, die nicht alle Kawos treffen. Das sind ' + str(
+        round(100 * counter / len(teams), 1)) + '%\n')
+
 
 def print_teams_met(teams, tm):
     log("")

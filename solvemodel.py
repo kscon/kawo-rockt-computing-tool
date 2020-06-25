@@ -16,28 +16,110 @@ def store_variable_values(teams, speisen, x, y, mc, tm, c, d):
                     x[i, j, s] = x[i, j, s].X
     for i in teams:
         for j in teams:
-            if i != j:
+            if i < j:
                 mc[i, j] = mc[i, j].x
                 tm[i, j] = tm[i, j].x
 
 
 def calcpriority(x):
     if x == 0:
-        return 1
+        return 0.1
     elif x == 1:
-        return 200
-    elif x == 2:
-        return 400
+        return 1
     else:
-        return 400
+        return 10
 
 
 def solve(teams, zimmer, speisen, p, kawo_bin, kawos, number_of_teams, options):
+    def krcb(model, where):
+        if where == GRB.Callback.MIPSOL and model.cbGet(GRB.Callback.MIPSOL_SOLCNT) >= 0:
+            # print(model.cbGet(GRB.Callback.MIPSOL_OBJ))
+            sol_x = model.cbGetSolution(x)
+            for i in teams:
+                # check for teams meeting twice
+                for j in teams:
+                    if i < j:
+                        teamcount = []
+                        for s in speisen:  # Team i bekocht Team j
+                            if sol_x[i, j, s] > 0.9999:
+                                teamcount.append(1)
+
+                        for g in teams:  # Team i und Team j treffen sich bei einem fremden Team
+                            if g != i and g != j:
+                                for s in speisen:
+                                    if sol_x[g, i, s] > 0.9999 and sol_x[g, j, s] > 0.9999:
+                                        teamcount.append(2)
+
+                        for s in speisen:  # Team j bekocht Team i
+                            if (sol_x[j, i, s] > 0.9999):
+                                teamcount.append(3)
+                        # print(teamcount)
+                        if len(teamcount) > 1:
+                            if 1 in teamcount and 3 in teamcount:
+                                for s in speisen:
+                                    for ss in speisen:
+                                        if (s != ss):
+                                            model.cbLazy(x[i, j, s] <= 1 - x[j, i, ss] + mc[i, j])
+                            elif 1 in teamcount and 2 in teamcount:
+                                for g in teams:
+                                    if g != i and g != j:
+                                        for s in speisen:
+                                            for ss in speisen:
+                                                if s != ss:
+                                                    model.cbLazy(
+                                                        x[g, i, s] + x[g, j, s] <= 2 - x[i, j, ss] + mc[i, j])
+                            elif 2 in teamcount and 3 in teamcount:
+                                for g in teams:
+                                    if g != i and g != j:
+                                        for s in speisen:
+                                            for ss in speisen:
+                                                if s != ss:
+                                                    model.cbLazy(
+                                                        x[g, i, s] + x[g, j, s] <= 2 - x[j, i, ss] + mc[i, j])
+                            else:
+                                for g in teams:
+                                    if g != i and g != j:
+                                        for s in speisen:
+                                            for gg in teams:
+                                                for ss in speisen:
+                                                    if g < gg and i != gg and j != gg and s != ss:
+                                                        model.cbLazy(
+                                                            x[g, i, s] + x[g, j, s] <= 3 - (
+                                                                    x[gg, i, ss] + x[gg, j, ss]) + mc[i, j])
+
+                # check for teams meeting not all kawos
+                met_kawos = []
+                for j in teams:
+                    for s in speisen:
+                        if i < j and (sol_x[i, j, s] > 0.9999 or sol_x[j, i, s] > 0.9999):
+                            for k in kawos:
+                                if kawo_bin[j, k] == 1:
+                                    met_kawos.append(k)
+                        for g in teams:
+                            if g != i and g != j and sol_x[g, i, s] > 0.999 and sol_x[g, j, s] > 0.9999:
+                                for k in kawos:
+                                    if kawo_bin[g, k] == 1:
+                                        met_kawos.append(k)
+                met_kawos = list(set(met_kawos))
+                missing_kawos = [k for k in kawos if k not in met_kawos]  # and kawo_bin[i,k] != 1]
+                # print(missing_kawos)
+                for k in missing_kawos:
+                    model.cbLazy(quicksum(x[i, j, s] + x[j, i, s] for s in speisen if i < j and kawo_bin[j, k] == 1)
+                                 >= 1 - km[i, k])
+
+                    model.cbLazy(quicksum(x[g, j, s] + x[g, i, s] for g in teams for j in teams if i < j != g and i != g
+                                          and kawo_bin[j, k] == 1) >= 1 - kn[i, k])
+
     model = Model("Kawo3Rockt!")
 
     # CONFIG
     model.setParam('TimeLimit', 30 * 60)
     model.setParam('MIPFocus', 0)
+    model.setParam('LazyConstraints', 1)
+    # if len(teams) % 3 != 0:
+    #    model.setParam('MIPGap', 10)
+    # model.setParam('Heuristics', 0.75)
+    # model.setParam('Symmetry', 2)
 
     model.modelsense = GRB.MINIMIZE
 
@@ -71,28 +153,41 @@ def solve(teams, zimmer, speisen, p, kawo_bin, kawos, number_of_teams, options):
     mc = {}
     for i in teams:
         for j in teams:
-            if i != j:
+            if i < j:
                 mc[i, j] = model.addVar(name='mc_' + i + '_' + j, vtype=GRB.BINARY)
 
     # Variable that is one if the team i meets team j at any dish
     tm = {}
     for i in teams:
         for j in teams:
-            if i != j:
+            if i < j:
                 tm[i, j] = model.addVar(name="tm_" + i + "_" + j, vtype=GRB.BINARY)
 
-    pdw = calcpriority(options['pdw'])
+    # variable that is one if a team i does not meet any team of kawo k
+    km = {}
+    for i in teams:
+        for k in kawos:
+            km[i, k] = model.addVar(name="km_" + i + "_" + k, vtype=GRB.BINARY)
+
+    kn = {}
+    for i in teams:
+        for k in kawos:
+            kn[i, k] = model.addVar(name="km_" + i + "_" + k, vtype=GRB.BINARY)
+
     madw = calcpriority(options['madw'])
     mnttw = calcpriority(options['mnttw'])
 
     # objective function:
     model.setObjective(
-        100 * quicksum(c[i, s] for i in teams for s in speisen)  # amount of teams having 3 other teams as guests
-        + 100 * quicksum(d[i, s] for i in teams for s in speisen)  # amount of teams having 1 other team as guests
-        + pdw * quicksum(p[i, s] * y[i, s] for i in teams for s in speisen)  # teams cooking their preferred dish
+        quicksum(c[i, s] for i in teams for s in speisen)  # amount of teams having 3 other teams as guests
+        + quicksum(d[i, s] for i in teams for s in speisen)  # amount of teams having 1 other team as guests
+        + quicksum(p[i, s] * y[i, s] for i in teams for s in speisen)  # teams cooking their preferred dish
         + mnttw * quicksum(mc[i, j] for i in teams for j in teams if i < j)  # punish if two teams meet twice
-        + madw * quicksum(tm[i, j] for i in teams for j in teams if i < j)  # punish if a team does not meet teams of
-        # every other Kawo
+        # + madw * quicksum(tm[i, j] for i in teams for j in teams if i < j)  # punish if a team does not meet teams of
+        # every kawo
+        + madw * quicksum(0.2 * km[i, k] for i in teams for k in kawos)
+        + madw * quicksum(kn[i, k] for i in teams for k in kawos)  # punish if a team does not meet teams of
+        # every kawo
     )
 
     model.update()
@@ -132,11 +227,12 @@ def solve(teams, zimmer, speisen, p, kawo_bin, kawos, number_of_teams, options):
                 for s in speisen:
                     model.addConstr(y[i, s] + y[ii, s] <= 1)
 
+    """
     # 6. Try to prevent meeting a team twice
     # 6a. Meeting a team at a dish from a third team implies do not cook for that team
     for i in teams:
         for j in teams:
-            if i != j:
+            if i < j:
                 for g in teams:
                     if g != i and g != j:
                         for s in speisen:
@@ -166,13 +262,13 @@ def solve(teams, zimmer, speisen, p, kawo_bin, kawos, number_of_teams, options):
                     for ss in speisen:
                         if (s != ss):
                             model.addConstr(x[i, j, s] <= 1 - x[j, i, ss] + mc[i, j])
-
+    
     # 6d. Make the variable assignment symmetric
     for i in teams:
         for j in teams:
             if i < j:
                 model.addConstr(mc[i, j] == mc[j, i])
-
+ 
     # 7. Try to have a team meet teams of every kawo
     # 7a. A team is met when cooked for it
     for i in teams:
@@ -180,29 +276,41 @@ def solve(teams, zimmer, speisen, p, kawo_bin, kawos, number_of_teams, options):
             for s in speisen:
                 if i < j:
                     model.addConstr(x[i, j, s] <= tm[i, j])
+                    model.addConstr(x[j, i, s] <= tm[i, j])
 
     # 7b. Team i meets a team j if both are guests of team g
     for i in teams:
         for j in teams:
             for g in teams:
-                if (i < j and i != g and j != g):
+                if i < j != g and i != g:
                     for s in speisen:
                         model.addConstr(x[g, j, s] <= tm[i, j] + (1 - x[g, i, s]))
+                        model.addConstr(x[g, i, s] <= tm[i, j] + (1 - x[g, j, s]))
+                # elif j < i != g and j != g:
+                #    for s in speisen:
+                #        model.addConstr(x[g, j, s] <= tm[j, i] + (1 - x[g, i, s]))
 
+    
     # 7c. Make teams meet variable symmetric
     for i in teams:
         for j in teams:
             if i < j:
                 model.addConstr(tm[i, j] == tm[j, i])
-
+    
+    
     # 7d. The main constraint. Try to meet at least one team of every kawo
     for i in teams:
         for k in kawos:
-            model.addConstr(quicksum(kawo_bin[j, k] * tm[i, j] for j in teams if i != j) >= 1)  # - knm[i,k])
-
+            model.addConstr(quicksum(kawo_bin[j, k] * tm[i, j] for j in teams if i < j)
+                            + quicksum(kawo_bin[j, k] * tm[j, i] for j in teams if i > j)
+                            >= 1)
+    """
     # Optimize the model
-    model.optimize()
+    # model.write('k3rockt.lp')
+    model.optimize(krcb)
+    # model.optimize()
 
+    # model.write('kaworockt.lp')
     print('\n Optimal solution value found: %g\n' % model.ObjVal)
     store_variable_values(teams, speisen, x, y, mc, tm, c, d)
     return x, y, mc, tm, c, d

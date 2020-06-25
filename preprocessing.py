@@ -72,11 +72,20 @@ def calculate_preferences(teams, speisen, vorspeise, hauptspeise, nachspeise):
     for i in teams:
         for s in speisen:
             if s == 'vorspeise':
-                p[i, s] = 10 ** vorspeise[i]
+                if vorspeise[i] != 2:
+                    p[i, s] = 0.1 * vorspeise[i]
+                else:
+                    p[i, s] = 1.0
             elif s == 'hauptspeise':
-                p[i, s] = 10 ** hauptspeise[i]
+                if hauptspeise[i] != 2:
+                    p[i, s] = 0.1 * hauptspeise[i]
+                else:
+                    p[i, s] = 1.0
             else:
-                p[i, s] = 10 ** nachspeise[i]
+                if nachspeise[i] != 2:
+                    p[i, s] = 0.1 * nachspeise[i]
+                else:
+                    p[i, s] = 1.0
     return p
 
 
