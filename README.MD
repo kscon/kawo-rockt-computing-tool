@@ -1,9 +1,9 @@
-#Kawo-Rockt-Computing Tool
+# Kawo-Rockt-Computing Tool
 
 ### Was?
 Ein 'kleines' Pythontool zur Berechnung optimaler Routen nach Art des Running-Dinners (aka Rudi-Rockt!) in den Kawos
 
-###Wie?
+### Wie?
 Man benötigt eine funktionierende Python Installation (getestet mit 3.7), sowie die Packages Pandas und Gurobi 
 (bei Installationsfragen hilft das Internet). Zur Ausführung muss main.py entsprechend (z.B. via der Kommandozeile)
 gestartet werden. Die Eingabedaten müssen im "input" Ordner (falls keiner da, muss man einen erstellen ) in Form
@@ -49,7 +49,7 @@ dafür melden können, folgt irgendwann).
 Sonst spuckt der Log ganz viele Sachen aus, die in den meisten Fällen nicht interessant sind, aber vielleicht lohnt sich
 ja mal ein Blick in den Code ;)
 
-###Hä?
+### Hä?
 Bei Fragen an Kevin Conrads (kevin.conrads@kawo3.rwth-aachen.de) wenden!
 
 Viel Spaß beim Basteln
