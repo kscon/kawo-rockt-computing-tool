@@ -46,6 +46,5 @@ def get_input(options):
 
     speisen = ['vorspeise', 'hauptspeise', 'nachspeise']
     kawos = list(set([str(k) for k in dict_kawo.values()]))
-    print(kawos)
 
     return teams, dict_zimmer, dict_unvertraeglichkeiten, dict_vorspeise, dict_hauptspeise, dict_nachspeise, dict_kawo, dict_email, speisen, kawos
