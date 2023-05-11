@@ -30,6 +30,7 @@ def calcpriority(x):
         return 10
 
 
+# noinspection PyUnresolvedReferences
 def solve(teams, zimmer, speisen, p, kawo_bin, kawos, number_of_teams, options):
     def krcb(model, where):
         if where == GRB.Callback.MIPSOL:
@@ -112,6 +113,7 @@ def solve(teams, zimmer, speisen, p, kawo_bin, kawos, number_of_teams, options):
                     for j in teams_k:
                         for g in teams:
                             if i != g and j != g and kawo_bin[g, k] != 1:
+                                # BUG Does not hold for all dishes
                                 model.cbLazy(x[g, j, s] + x[g, i, s] >= 2 - 2 * tm[i, j])
 
     model = Model("Kawo3Rockt!")

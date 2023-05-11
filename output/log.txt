@@ -1,0 +1,381 @@
+
+##### PREPROCESSING #####
+Es gibt 50 teilnehmende Teams
+Es gibt 15 Kawo1, 16 Kawo2 und 19 Kawo3 Teams
+##### End of Preprocessing #####
+
+##### POST PROCESSING #####
+
+--- Welches Team kocht nicht seinen präferierten Gang ---
+Es gibt insgesamt 0 Teamwiedertreffen
+
+--- Verteilung der Kawos ---
+Es gibt 19 Gänge mit Beteiligung aller Kawos
+Es gibt 28 Gänge mit Beteiligung zweier Kawos
+Es gibt 3 Gänge mit Beteiligung eines Kawos
+
+--- Teams not meeting all Kawos ---
+Insgesamt gibt es 0 Teams, die nicht alle Kawos treffen. Das sind 0.0%
+
+--- Teams cooking not for three: ---
+team D cooks for one team! 
+team AH cooks for three teams! 
+team AN cooks for one team! 
+team AV cooks for three teams! 
+
+
+--- Welches Team kocht welchen Gang ---
+Es kocht Team A den Gang vorspeise.
+Es kocht Team B den Gang hauptspeise.
+Es kocht Team C den Gang hauptspeise.
+Es kocht Team D den Gang hauptspeise.
+Es kocht Team E den Gang nachspeise.
+Es kocht Team F den Gang vorspeise.
+Es kocht Team G den Gang vorspeise.
+Es kocht Team H den Gang hauptspeise.
+Es kocht Team I den Gang vorspeise.
+Es kocht Team J den Gang nachspeise.
+Es kocht Team K den Gang nachspeise.
+Es kocht Team L den Gang hauptspeise.
+Es kocht Team M den Gang vorspeise.
+Es kocht Team N den Gang hauptspeise.
+Es kocht Team O den Gang nachspeise.
+Es kocht Team P den Gang hauptspeise.
+Es kocht Team Q den Gang nachspeise.
+Es kocht Team R den Gang vorspeise.
+Es kocht Team S den Gang hauptspeise.
+Es kocht Team T den Gang hauptspeise.
+Es kocht Team U den Gang nachspeise.
+Es kocht Team V den Gang vorspeise.
+Es kocht Team W den Gang hauptspeise.
+Es kocht Team X den Gang vorspeise.
+Es kocht Team Y den Gang nachspeise.
+Es kocht Team Z den Gang hauptspeise.
+Es kocht Team AA den Gang hauptspeise.
+Es kocht Team AB den Gang hauptspeise.
+Es kocht Team AC den Gang vorspeise.
+Es kocht Team AD den Gang vorspeise.
+Es kocht Team AE den Gang nachspeise.
+Es kocht Team AF den Gang nachspeise.
+Es kocht Team AG den Gang vorspeise.
+Es kocht Team AH den Gang vorspeise.
+Es kocht Team AI den Gang hauptspeise.
+Es kocht Team AJ den Gang nachspeise.
+Es kocht Team AK den Gang hauptspeise.
+Es kocht Team AL den Gang nachspeise.
+Es kocht Team AM den Gang vorspeise.
+Es kocht Team AN den Gang nachspeise.
+Es kocht Team AO den Gang nachspeise.
+Es kocht Team AP den Gang hauptspeise.
+Es kocht Team AQ den Gang vorspeise.
+Es kocht Team AR den Gang nachspeise.
+Es kocht Team AS den Gang hauptspeise.
+Es kocht Team AT den Gang nachspeise.
+Es kocht Team AU den Gang nachspeise.
+Es kocht Team AV den Gang vorspeise.
+Es kocht Team AW den Gang vorspeise.
+Es kocht Team AX den Gang nachspeise.
+
+Es kocht Team A für Team H den Gang vorspeise.
+Dabei sollte das Team A bitte auf  verzichten.
+Es kocht Team A für Team Y den Gang vorspeise.
+Dabei sollte das Team A bitte auf  verzichten.
+Es kocht Team F für Team AK den Gang vorspeise.
+Dabei sollte das Team F bitte auf  verzichten.
+Es kocht Team F für Team AL den Gang vorspeise.
+Dabei sollte das Team F bitte auf  verzichten.
+Es kocht Team G für Team AF den Gang vorspeise.
+Dabei sollte das Team G bitte auf  verzichten.
+Es kocht Team G für Team AS den Gang vorspeise.
+Dabei sollte das Team G bitte auf  verzichten.
+Es kocht Team I für Team Z den Gang vorspeise.
+Dabei sollte das Team I bitte auf  verzichten.
+Es kocht Team I für Team AE den Gang vorspeise.
+Dabei sollte das Team I bitte auf  verzichten.
+Es kocht Team M für Team W den Gang vorspeise.
+Dabei sollte das Team M bitte auf  verzichten.
+Es kocht Team M für Team AA den Gang vorspeise.
+Dabei sollte das Team M bitte auf  verzichten.
+Es kocht Team R für Team O den Gang vorspeise.
+Dabei sollte das Team R bitte auf  verzichten.
+Es kocht Team R für Team AX den Gang vorspeise.
+Dabei sollte das Team R bitte auf  verzichten.
+Es kocht Team V für Team B den Gang vorspeise.
+Dabei sollte das Team V bitte auf  verzichten.
+Es kocht Team V für Team C den Gang vorspeise.
+Dabei sollte das Team V bitte auf  verzichten.
+Es kocht Team X für Team T den Gang vorspeise.
+Dabei sollte das Team X bitte auf  verzichten.
+Es kocht Team X für Team AN den Gang vorspeise.
+Dabei sollte das Team X bitte auf  verzichten.
+Es kocht Team AC für Team AO den Gang vorspeise.
+Dabei sollte das Team AC bitte auf  verzichten.
+Es kocht Team AC für Team AP den Gang vorspeise.
+Dabei sollte das Team AC bitte auf  verzichten.
+Es kocht Team AD für Team U den Gang vorspeise.
+Dabei sollte das Team AD bitte auf  verzichten.
+Es kocht Team AD für Team AJ den Gang vorspeise.
+Dabei sollte das Team AD bitte auf  verzichten.
+Es kocht Team AG für Team S den Gang vorspeise.
+Dabei sollte das Team AG bitte auf  verzichten.
+Es kocht Team AG für Team AR den Gang vorspeise.
+Dabei sollte das Team AG bitte auf  verzichten.
+Es kocht Team AH für Team D den Gang vorspeise.
+Dabei sollte das Team AH bitte auf  verzichten.
+Es kocht Team AH für Team L den Gang vorspeise.
+Dabei sollte das Team AH bitte auf  verzichten.
+Es kocht Team AH für Team AI den Gang vorspeise.
+Dabei sollte das Team AH bitte auf  verzichten.
+Es kocht Team AM für Team K den Gang vorspeise.
+Dabei sollte das Team AM bitte auf  verzichten.
+Es kocht Team AM für Team AU den Gang vorspeise.
+Dabei sollte das Team AM bitte auf  verzichten.
+Es kocht Team AQ für Team Q den Gang vorspeise.
+Dabei sollte das Team AQ bitte auf  verzichten.
+Es kocht Team AQ für Team AB den Gang vorspeise.
+Dabei sollte das Team AQ bitte auf  verzichten.
+Es kocht Team AV für Team J den Gang vorspeise.
+Dabei sollte das Team AV bitte auf  verzichten.
+Es kocht Team AV für Team P den Gang vorspeise.
+Dabei sollte das Team AV bitte auf  verzichten.
+Es kocht Team AV für Team AT den Gang vorspeise.
+Dabei sollte das Team AV bitte auf  verzichten.
+Es kocht Team AW für Team E den Gang vorspeise.
+Dabei sollte das Team AW bitte auf  verzichten.
+Es kocht Team AW für Team N den Gang vorspeise.
+Dabei sollte das Team AW bitte auf  verzichten.
+Es kocht Team B für Team AU den Gang hauptspeise.
+Dabei sollte das Team B bitte auf  verzichten.
+Es kocht Team B für Team AV den Gang hauptspeise.
+Dabei sollte das Team B bitte auf  verzichten.
+Es kocht Team C für Team AH den Gang hauptspeise.
+Dabei sollte das Team C bitte auf  verzichten.
+Es kocht Team C für Team AJ den Gang hauptspeise.
+Dabei sollte das Team C bitte auf  verzichten.
+Es kocht Team D für Team E den Gang hauptspeise.
+Dabei sollte das Team D bitte auf  verzichten.
+Es kocht Team H für Team J den Gang hauptspeise.
+Dabei sollte das Team H bitte auf  verzichten.
+Es kocht Team H für Team AF den Gang hauptspeise.
+Dabei sollte das Team H bitte auf  verzichten.
+Es kocht Team L für Team U den Gang hauptspeise.
+Dabei sollte das Team L bitte auf  verzichten.
+Es kocht Team L für Team AG den Gang hauptspeise.
+Dabei sollte das Team L bitte auf  verzichten.
+Es kocht Team N für Team V den Gang hauptspeise.
+Dabei sollte das Team N bitte auf  verzichten.
+Es kocht Team N für Team AX den Gang hauptspeise.
+Dabei sollte das Team N bitte auf  verzichten.
+Es kocht Team P für Team M den Gang hauptspeise.
+Dabei sollte das Team P bitte auf  verzichten.
+Es kocht Team P für Team X den Gang hauptspeise.
+Dabei sollte das Team P bitte auf  verzichten.
+Es kocht Team S für Team I den Gang hauptspeise.
+Dabei sollte das Team S bitte auf  verzichten.
+Es kocht Team S für Team AL den Gang hauptspeise.
+Dabei sollte das Team S bitte auf  verzichten.
+Es kocht Team T für Team O den Gang hauptspeise.
+Dabei sollte das Team T bitte auf  verzichten.
+Es kocht Team T für Team AR den Gang hauptspeise.
+Dabei sollte das Team T bitte auf  verzichten.
+Es kocht Team W für Team F den Gang hauptspeise.
+Dabei sollte das Team W bitte auf  verzichten.
+Es kocht Team W für Team AT den Gang hauptspeise.
+Dabei sollte das Team W bitte auf  verzichten.
+Es kocht Team Z für Team Q den Gang hauptspeise.
+Dabei sollte das Team Z bitte auf  verzichten.
+Es kocht Team Z für Team AM den Gang hauptspeise.
+Dabei sollte das Team Z bitte auf  verzichten.
+Es kocht Team AA für Team A den Gang hauptspeise.
+Dabei sollte das Team AA bitte auf  verzichten.
+Es kocht Team AA für Team R den Gang hauptspeise.
+Dabei sollte das Team AA bitte auf  verzichten.
+Es kocht Team AB für Team K den Gang hauptspeise.
+Dabei sollte das Team AB bitte auf  verzichten.
+Es kocht Team AB für Team AN den Gang hauptspeise.
+Dabei sollte das Team AB bitte auf  verzichten.
+Es kocht Team AI für Team G den Gang hauptspeise.
+Dabei sollte das Team AI bitte auf  verzichten.
+Es kocht Team AI für Team AW den Gang hauptspeise.
+Dabei sollte das Team AI bitte auf  verzichten.
+Es kocht Team AK für Team AC den Gang hauptspeise.
+Dabei sollte das Team AK bitte auf  verzichten.
+Es kocht Team AK für Team AQ den Gang hauptspeise.
+Dabei sollte das Team AK bitte auf  verzichten.
+Es kocht Team AP für Team Y den Gang hauptspeise.
+Dabei sollte das Team AP bitte auf  verzichten.
+Es kocht Team AP für Team AE den Gang hauptspeise.
+Dabei sollte das Team AP bitte auf  verzichten.
+Es kocht Team AS für Team AD den Gang hauptspeise.
+Dabei sollte das Team AS bitte auf  verzichten.
+Es kocht Team AS für Team AO den Gang hauptspeise.
+Dabei sollte das Team AS bitte auf  verzichten.
+Es kocht Team E für Team L den Gang nachspeise.
+Dabei sollte das Team E bitte auf  verzichten.
+Es kocht Team E für Team T den Gang nachspeise.
+Dabei sollte das Team E bitte auf  verzichten.
+Es kocht Team J für Team S den Gang nachspeise.
+Dabei sollte das Team J bitte auf  verzichten.
+Es kocht Team J für Team AP den Gang nachspeise.
+Dabei sollte das Team J bitte auf  verzichten.
+Es kocht Team K für Team R den Gang nachspeise.
+Dabei sollte das Team K bitte auf  verzichten.
+Es kocht Team K für Team W den Gang nachspeise.
+Dabei sollte das Team K bitte auf  verzichten.
+Es kocht Team O für Team AC den Gang nachspeise.
+Dabei sollte das Team O bitte auf  verzichten.
+Es kocht Team O für Team AW den Gang nachspeise.
+Dabei sollte das Team O bitte auf  verzichten.
+Es kocht Team Q für Team I den Gang nachspeise.
+Dabei sollte das Team Q bitte auf  verzichten.
+Es kocht Team Q für Team AK den Gang nachspeise.
+Dabei sollte das Team Q bitte auf  verzichten.
+Es kocht Team U für Team Z den Gang nachspeise.
+Dabei sollte das Team U bitte auf  verzichten.
+Es kocht Team U für Team AB den Gang nachspeise.
+Dabei sollte das Team U bitte auf  verzichten.
+Es kocht Team Y für Team M den Gang nachspeise.
+Dabei sollte das Team Y bitte auf  verzichten.
+Es kocht Team Y für Team AD den Gang nachspeise.
+Dabei sollte das Team Y bitte auf  verzichten.
+Es kocht Team AE für Team A den Gang nachspeise.
+Dabei sollte das Team AE bitte auf  verzichten.
+Es kocht Team AE für Team AG den Gang nachspeise.
+Dabei sollte das Team AE bitte auf  verzichten.
+Es kocht Team AF für Team B den Gang nachspeise.
+Dabei sollte das Team AF bitte auf  verzichten.
+Es kocht Team AF für Team AI den Gang nachspeise.
+Dabei sollte das Team AF bitte auf  verzichten.
+Es kocht Team AJ für Team D den Gang nachspeise.
+Dabei sollte das Team AJ bitte auf  verzichten.
+Es kocht Team AJ für Team F den Gang nachspeise.
+Dabei sollte das Team AJ bitte auf  verzichten.
+Es kocht Team AL für Team P den Gang nachspeise.
+Dabei sollte das Team AL bitte auf  verzichten.
+Es kocht Team AL für Team V den Gang nachspeise.
+Dabei sollte das Team AL bitte auf  verzichten.
+Es kocht Team AN für Team G den Gang nachspeise.
+Dabei sollte das Team AN bitte auf  verzichten.
+Es kocht Team AO für Team AH den Gang nachspeise.
+Dabei sollte das Team AO bitte auf  verzichten.
+Es kocht Team AO für Team AV den Gang nachspeise.
+Dabei sollte das Team AO bitte auf  verzichten.
+Es kocht Team AR für Team N den Gang nachspeise.
+Dabei sollte das Team AR bitte auf  verzichten.
+Es kocht Team AR für Team AQ den Gang nachspeise.
+Dabei sollte das Team AR bitte auf  verzichten.
+Es kocht Team AT für Team H den Gang nachspeise.
+Dabei sollte das Team AT bitte auf  verzichten.
+Es kocht Team AT für Team AM den Gang nachspeise.
+Dabei sollte das Team AT bitte auf  verzichten.
+Es kocht Team AU für Team X den Gang nachspeise.
+Dabei sollte das Team AU bitte auf  verzichten.
+Es kocht Team AU für Team AA den Gang nachspeise.
+Dabei sollte das Team AU bitte auf  verzichten.
+Es kocht Team AX für Team C den Gang nachspeise.
+Dabei sollte das Team AX bitte auf  verzichten.
+Es kocht Team AX für Team AS den Gang nachspeise.
+Dabei sollte das Team AX bitte auf  verzichten.
+
+Das Team A muss zu Team AA für den Gang hauptspeise.
+Das Team A muss zu Team AE für den Gang nachspeise.
+Das Team B muss zu Team V für den Gang vorspeise.
+Das Team B muss zu Team AF für den Gang nachspeise.
+Das Team C muss zu Team V für den Gang vorspeise.
+Das Team C muss zu Team AX für den Gang nachspeise.
+Das Team D muss zu Team AH für den Gang vorspeise.
+Das Team D muss zu Team AJ für den Gang nachspeise.
+Das Team E muss zu Team AW für den Gang vorspeise.
+Das Team E muss zu Team D für den Gang hauptspeise.
+Das Team F muss zu Team W für den Gang hauptspeise.
+Das Team F muss zu Team AJ für den Gang nachspeise.
+Das Team G muss zu Team AI für den Gang hauptspeise.
+Das Team G muss zu Team AN für den Gang nachspeise.
+Das Team H muss zu Team A für den Gang vorspeise.
+Das Team H muss zu Team AT für den Gang nachspeise.
+Das Team I muss zu Team S für den Gang hauptspeise.
+Das Team I muss zu Team Q für den Gang nachspeise.
+Das Team J muss zu Team AV für den Gang vorspeise.
+Das Team J muss zu Team H für den Gang hauptspeise.
+Das Team K muss zu Team AM für den Gang vorspeise.
+Das Team K muss zu Team AB für den Gang hauptspeise.
+Das Team L muss zu Team AH für den Gang vorspeise.
+Das Team L muss zu Team E für den Gang nachspeise.
+Das Team M muss zu Team P für den Gang hauptspeise.
+Das Team M muss zu Team Y für den Gang nachspeise.
+Das Team N muss zu Team AW für den Gang vorspeise.
+Das Team N muss zu Team AR für den Gang nachspeise.
+Das Team O muss zu Team R für den Gang vorspeise.
+Das Team O muss zu Team T für den Gang hauptspeise.
+Das Team P muss zu Team AV für den Gang vorspeise.
+Das Team P muss zu Team AL für den Gang nachspeise.
+Das Team Q muss zu Team AQ für den Gang vorspeise.
+Das Team Q muss zu Team Z für den Gang hauptspeise.
+Das Team R muss zu Team AA für den Gang hauptspeise.
+Das Team R muss zu Team K für den Gang nachspeise.
+Das Team S muss zu Team AG für den Gang vorspeise.
+Das Team S muss zu Team J für den Gang nachspeise.
+Das Team T muss zu Team X für den Gang vorspeise.
+Das Team T muss zu Team E für den Gang nachspeise.
+Das Team U muss zu Team AD für den Gang vorspeise.
+Das Team U muss zu Team L für den Gang hauptspeise.
+Das Team V muss zu Team N für den Gang hauptspeise.
+Das Team V muss zu Team AL für den Gang nachspeise.
+Das Team W muss zu Team M für den Gang vorspeise.
+Das Team W muss zu Team K für den Gang nachspeise.
+Das Team X muss zu Team P für den Gang hauptspeise.
+Das Team X muss zu Team AU für den Gang nachspeise.
+Das Team Y muss zu Team A für den Gang vorspeise.
+Das Team Y muss zu Team AP für den Gang hauptspeise.
+Das Team Z muss zu Team I für den Gang vorspeise.
+Das Team Z muss zu Team U für den Gang nachspeise.
+Das Team AA muss zu Team M für den Gang vorspeise.
+Das Team AA muss zu Team AU für den Gang nachspeise.
+Das Team AB muss zu Team AQ für den Gang vorspeise.
+Das Team AB muss zu Team U für den Gang nachspeise.
+Das Team AC muss zu Team AK für den Gang hauptspeise.
+Das Team AC muss zu Team O für den Gang nachspeise.
+Das Team AD muss zu Team AS für den Gang hauptspeise.
+Das Team AD muss zu Team Y für den Gang nachspeise.
+Das Team AE muss zu Team I für den Gang vorspeise.
+Das Team AE muss zu Team AP für den Gang hauptspeise.
+Das Team AF muss zu Team G für den Gang vorspeise.
+Das Team AF muss zu Team H für den Gang hauptspeise.
+Das Team AG muss zu Team L für den Gang hauptspeise.
+Das Team AG muss zu Team AE für den Gang nachspeise.
+Das Team AH muss zu Team C für den Gang hauptspeise.
+Das Team AH muss zu Team AO für den Gang nachspeise.
+Das Team AI muss zu Team AH für den Gang vorspeise.
+Das Team AI muss zu Team AF für den Gang nachspeise.
+Das Team AJ muss zu Team AD für den Gang vorspeise.
+Das Team AJ muss zu Team C für den Gang hauptspeise.
+Das Team AK muss zu Team F für den Gang vorspeise.
+Das Team AK muss zu Team Q für den Gang nachspeise.
+Das Team AL muss zu Team F für den Gang vorspeise.
+Das Team AL muss zu Team S für den Gang hauptspeise.
+Das Team AM muss zu Team Z für den Gang hauptspeise.
+Das Team AM muss zu Team AT für den Gang nachspeise.
+Das Team AN muss zu Team X für den Gang vorspeise.
+Das Team AN muss zu Team AB für den Gang hauptspeise.
+Das Team AO muss zu Team AC für den Gang vorspeise.
+Das Team AO muss zu Team AS für den Gang hauptspeise.
+Das Team AP muss zu Team AC für den Gang vorspeise.
+Das Team AP muss zu Team J für den Gang nachspeise.
+Das Team AQ muss zu Team AK für den Gang hauptspeise.
+Das Team AQ muss zu Team AR für den Gang nachspeise.
+Das Team AR muss zu Team AG für den Gang vorspeise.
+Das Team AR muss zu Team T für den Gang hauptspeise.
+Das Team AS muss zu Team G für den Gang vorspeise.
+Das Team AS muss zu Team AX für den Gang nachspeise.
+Das Team AT muss zu Team AV für den Gang vorspeise.
+Das Team AT muss zu Team W für den Gang hauptspeise.
+Das Team AU muss zu Team AM für den Gang vorspeise.
+Das Team AU muss zu Team B für den Gang hauptspeise.
+Das Team AV muss zu Team B für den Gang hauptspeise.
+Das Team AV muss zu Team AO für den Gang nachspeise.
+Das Team AW muss zu Team AI für den Gang hauptspeise.
+Das Team AW muss zu Team O für den Gang nachspeise.
+Das Team AX muss zu Team R für den Gang vorspeise.
+Das Team AX muss zu Team N für den Gang hauptspeise.
+
+##### End of Post Processing #####

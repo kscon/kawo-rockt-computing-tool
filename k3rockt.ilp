@@ -1,0 +1,349 @@
+\ Model Kawo3Rockt!_copy
+\ LP format - for model browsing. Use MPS format to capture full model detail.
+Minimize
+ 
+Subject To
+ R0: x_A_B_vorspeise + x_A_C_vorspeise + x_A_D_vorspeise + x_A_E_vorspeise
+   + x_A_F_vorspeise + x_A_G_vorspeise + x_A_H_vorspeise + x_A_I_vorspeise
+   - 2 y_A_vorspeise - c_A_vorspeise + d_A_vorspeise = 0
+ R1: - y_A_vorspeise + c_A_vorspeise + d_A_vorspeise <= 0
+ R2: x_A_B_hauptspeise + x_A_C_hauptspeise + x_A_D_hauptspeise
+   + x_A_E_hauptspeise + x_A_F_hauptspeise + x_A_G_hauptspeise
+   + x_A_H_hauptspeise + x_A_I_hauptspeise - 2 y_A_hauptspeise
+   - c_A_hauptspeise + d_A_hauptspeise = 0
+ R3: - y_A_hauptspeise + c_A_hauptspeise + d_A_hauptspeise <= 0
+ R4: x_A_B_nachspeise + x_A_C_nachspeise + x_A_D_nachspeise
+   + x_A_E_nachspeise + x_A_F_nachspeise + x_A_G_nachspeise
+   + x_A_H_nachspeise + x_A_I_nachspeise - 2 y_A_nachspeise
+   - c_A_nachspeise + d_A_nachspeise = 0
+ R5: - y_A_nachspeise + c_A_nachspeise + d_A_nachspeise <= 0
+ R6: x_B_A_vorspeise + x_B_C_vorspeise + x_B_D_vorspeise + x_B_E_vorspeise
+   + x_B_F_vorspeise + x_B_G_vorspeise + x_B_H_vorspeise + x_B_I_vorspeise
+   - 2 y_B_vorspeise - c_B_vorspeise + d_B_vorspeise = 0
+ R7: - y_B_vorspeise + c_B_vorspeise + d_B_vorspeise <= 0
+ R8: x_B_A_hauptspeise + x_B_C_hauptspeise + x_B_D_hauptspeise
+   + x_B_E_hauptspeise + x_B_F_hauptspeise + x_B_G_hauptspeise
+   + x_B_H_hauptspeise + x_B_I_hauptspeise - 2 y_B_hauptspeise
+   - c_B_hauptspeise + d_B_hauptspeise = 0
+ R9: - y_B_hauptspeise + c_B_hauptspeise + d_B_hauptspeise <= 0
+ R10: x_B_A_nachspeise + x_B_C_nachspeise + x_B_D_nachspeise
+   + x_B_E_nachspeise + x_B_F_nachspeise + x_B_G_nachspeise
+   + x_B_H_nachspeise + x_B_I_nachspeise - 2 y_B_nachspeise
+   - c_B_nachspeise + d_B_nachspeise = 0
+ R11: - y_B_nachspeise + c_B_nachspeise + d_B_nachspeise <= 0
+ R12: x_C_A_vorspeise + x_C_B_vorspeise + x_C_D_vorspeise + x_C_E_vorspeise
+   + x_C_F_vorspeise + x_C_G_vorspeise + x_C_H_vorspeise + x_C_I_vorspeise
+   - 2 y_C_vorspeise - c_C_vorspeise + d_C_vorspeise = 0
+ R13: - y_C_vorspeise + c_C_vorspeise + d_C_vorspeise <= 0
+ R14: x_C_A_hauptspeise + x_C_B_hauptspeise + x_C_D_hauptspeise
+   + x_C_E_hauptspeise + x_C_F_hauptspeise + x_C_G_hauptspeise
+   + x_C_H_hauptspeise + x_C_I_hauptspeise - 2 y_C_hauptspeise
+   - c_C_hauptspeise + d_C_hauptspeise = 0
+ R15: - y_C_hauptspeise + c_C_hauptspeise + d_C_hauptspeise <= 0
+ R16: x_C_A_nachspeise + x_C_B_nachspeise + x_C_D_nachspeise
+   + x_C_E_nachspeise + x_C_F_nachspeise + x_C_G_nachspeise
+   + x_C_H_nachspeise + x_C_I_nachspeise - 2 y_C_nachspeise
+   - c_C_nachspeise + d_C_nachspeise = 0
+ R17: - y_C_nachspeise + c_C_nachspeise + d_C_nachspeise <= 0
+ R18: x_D_A_vorspeise + x_D_B_vorspeise + x_D_C_vorspeise + x_D_E_vorspeise
+   + x_D_F_vorspeise + x_D_G_vorspeise + x_D_H_vorspeise + x_D_I_vorspeise
+   - 2 y_D_vorspeise - c_D_vorspeise + d_D_vorspeise = 0
+ R19: - y_D_vorspeise + c_D_vorspeise + d_D_vorspeise <= 0
+ R20: x_D_A_hauptspeise + x_D_B_hauptspeise + x_D_C_hauptspeise
+   + x_D_E_hauptspeise + x_D_F_hauptspeise + x_D_G_hauptspeise
+   + x_D_H_hauptspeise + x_D_I_hauptspeise - 2 y_D_hauptspeise
+   - c_D_hauptspeise + d_D_hauptspeise = 0
+ R21: - y_D_hauptspeise + c_D_hauptspeise + d_D_hauptspeise <= 0
+ R22: x_D_A_nachspeise + x_D_B_nachspeise + x_D_C_nachspeise
+   + x_D_E_nachspeise + x_D_F_nachspeise + x_D_G_nachspeise
+   + x_D_H_nachspeise + x_D_I_nachspeise - 2 y_D_nachspeise
+   - c_D_nachspeise + d_D_nachspeise = 0
+ R23: - y_D_nachspeise + c_D_nachspeise + d_D_nachspeise <= 0
+ R24: x_E_A_vorspeise + x_E_B_vorspeise + x_E_C_vorspeise + x_E_D_vorspeise
+   + x_E_F_vorspeise + x_E_G_vorspeise + x_E_H_vorspeise + x_E_I_vorspeise
+   - 2 y_E_vorspeise - c_E_vorspeise + d_E_vorspeise = 0
+ R25: - y_E_vorspeise + c_E_vorspeise + d_E_vorspeise <= 0
+ R26: x_E_A_hauptspeise + x_E_B_hauptspeise + x_E_C_hauptspeise
+   + x_E_D_hauptspeise + x_E_F_hauptspeise + x_E_G_hauptspeise
+   + x_E_H_hauptspeise + x_E_I_hauptspeise - 2 y_E_hauptspeise
+   - c_E_hauptspeise + d_E_hauptspeise = 0
+ R27: - y_E_hauptspeise + c_E_hauptspeise + d_E_hauptspeise <= 0
+ R28: x_E_A_nachspeise + x_E_B_nachspeise + x_E_C_nachspeise
+   + x_E_D_nachspeise + x_E_F_nachspeise + x_E_G_nachspeise
+   + x_E_H_nachspeise + x_E_I_nachspeise - 2 y_E_nachspeise
+   - c_E_nachspeise + d_E_nachspeise = 0
+ R29: - y_E_nachspeise + c_E_nachspeise + d_E_nachspeise <= 0
+ R30: x_F_A_vorspeise + x_F_B_vorspeise + x_F_C_vorspeise + x_F_D_vorspeise
+   + x_F_E_vorspeise + x_F_G_vorspeise + x_F_H_vorspeise + x_F_I_vorspeise
+   - 2 y_F_vorspeise - c_F_vorspeise + d_F_vorspeise = 0
+ R31: - y_F_vorspeise + c_F_vorspeise + d_F_vorspeise <= 0
+ R32: x_F_A_hauptspeise + x_F_B_hauptspeise + x_F_C_hauptspeise
+   + x_F_D_hauptspeise + x_F_E_hauptspeise + x_F_G_hauptspeise
+   + x_F_H_hauptspeise + x_F_I_hauptspeise - 2 y_F_hauptspeise
+   - c_F_hauptspeise + d_F_hauptspeise = 0
+ R33: - y_F_hauptspeise + c_F_hauptspeise + d_F_hauptspeise <= 0
+ R34: x_F_A_nachspeise + x_F_B_nachspeise + x_F_C_nachspeise
+   + x_F_D_nachspeise + x_F_E_nachspeise + x_F_G_nachspeise
+   + x_F_H_nachspeise + x_F_I_nachspeise - 2 y_F_nachspeise
+   - c_F_nachspeise + d_F_nachspeise = 0
+ R35: - y_F_nachspeise + c_F_nachspeise + d_F_nachspeise <= 0
+ R36: x_G_A_vorspeise + x_G_B_vorspeise + x_G_C_vorspeise + x_G_D_vorspeise
+   + x_G_E_vorspeise + x_G_F_vorspeise + x_G_H_vorspeise + x_G_I_vorspeise
+   - 2 y_G_vorspeise - c_G_vorspeise + d_G_vorspeise = 0
+ R37: - y_G_vorspeise + c_G_vorspeise + d_G_vorspeise <= 0
+ R38: x_G_A_hauptspeise + x_G_B_hauptspeise + x_G_C_hauptspeise
+   + x_G_D_hauptspeise + x_G_E_hauptspeise + x_G_F_hauptspeise
+   + x_G_H_hauptspeise + x_G_I_hauptspeise - 2 y_G_hauptspeise
+   - c_G_hauptspeise + d_G_hauptspeise = 0
+ R39: - y_G_hauptspeise + c_G_hauptspeise + d_G_hauptspeise <= 0
+ R40: x_G_A_nachspeise + x_G_B_nachspeise + x_G_C_nachspeise
+   + x_G_D_nachspeise + x_G_E_nachspeise + x_G_F_nachspeise
+   + x_G_H_nachspeise + x_G_I_nachspeise - 2 y_G_nachspeise
+   - c_G_nachspeise + d_G_nachspeise = 0
+ R41: - y_G_nachspeise + c_G_nachspeise + d_G_nachspeise <= 0
+ R42: x_H_A_vorspeise + x_H_B_vorspeise + x_H_C_vorspeise + x_H_D_vorspeise
+   + x_H_E_vorspeise + x_H_F_vorspeise + x_H_G_vorspeise + x_H_I_vorspeise
+   - 2 y_H_vorspeise - c_H_vorspeise + d_H_vorspeise = 0
+ R43: - y_H_vorspeise + c_H_vorspeise + d_H_vorspeise <= 0
+ R44: x_H_A_hauptspeise + x_H_B_hauptspeise + x_H_C_hauptspeise
+   + x_H_D_hauptspeise + x_H_E_hauptspeise + x_H_F_hauptspeise
+   + x_H_G_hauptspeise + x_H_I_hauptspeise - 2 y_H_hauptspeise
+   - c_H_hauptspeise + d_H_hauptspeise = 0
+ R45: - y_H_hauptspeise + c_H_hauptspeise + d_H_hauptspeise <= 0
+ R46: x_H_A_nachspeise + x_H_B_nachspeise + x_H_C_nachspeise
+   + x_H_D_nachspeise + x_H_E_nachspeise + x_H_F_nachspeise
+   + x_H_G_nachspeise + x_H_I_nachspeise - 2 y_H_nachspeise
+   - c_H_nachspeise + d_H_nachspeise = 0
+ R47: - y_H_nachspeise + c_H_nachspeise + d_H_nachspeise <= 0
+ R48: x_I_A_vorspeise + x_I_B_vorspeise + x_I_C_vorspeise + x_I_D_vorspeise
+   + x_I_E_vorspeise + x_I_F_vorspeise + x_I_G_vorspeise + x_I_H_vorspeise
+   - 2 y_I_vorspeise - c_I_vorspeise + d_I_vorspeise = 0
+ R49: - y_I_vorspeise + c_I_vorspeise + d_I_vorspeise <= 0
+ R50: x_I_A_hauptspeise + x_I_B_hauptspeise + x_I_C_hauptspeise
+   + x_I_D_hauptspeise + x_I_E_hauptspeise + x_I_F_hauptspeise
+   + x_I_G_hauptspeise + x_I_H_hauptspeise - 2 y_I_hauptspeise
+   - c_I_hauptspeise + d_I_hauptspeise = 0
+ R51: - y_I_hauptspeise + c_I_hauptspeise + d_I_hauptspeise <= 0
+ R52: x_I_A_nachspeise + x_I_B_nachspeise + x_I_C_nachspeise
+   + x_I_D_nachspeise + x_I_E_nachspeise + x_I_F_nachspeise
+   + x_I_G_nachspeise + x_I_H_nachspeise - 2 y_I_nachspeise
+   - c_I_nachspeise + d_I_nachspeise = 0
+ R53: - y_I_nachspeise + c_I_nachspeise + d_I_nachspeise <= 0
+ R54: y_A_vorspeise + y_A_hauptspeise + y_A_nachspeise = 1
+ R55: y_B_vorspeise + y_B_hauptspeise + y_B_nachspeise = 1
+ R56: y_C_vorspeise + y_C_hauptspeise + y_C_nachspeise = 1
+ R57: y_D_vorspeise + y_D_hauptspeise + y_D_nachspeise = 1
+ R58: y_E_vorspeise + y_E_hauptspeise + y_E_nachspeise = 1
+ R59: y_F_vorspeise + y_F_hauptspeise + y_F_nachspeise = 1
+ R60: y_G_vorspeise + y_G_hauptspeise + y_G_nachspeise = 1
+ R61: y_H_vorspeise + y_H_hauptspeise + y_H_nachspeise = 1
+ R62: y_I_vorspeise + y_I_hauptspeise + y_I_nachspeise = 1
+ R63: y_A_vorspeise + y_B_vorspeise + y_C_vorspeise + y_D_vorspeise
+   + y_E_vorspeise + y_F_vorspeise + y_G_vorspeise + y_H_vorspeise
+   + y_I_vorspeise <= 4
+ R64: y_A_vorspeise + y_B_vorspeise + y_C_vorspeise + y_D_vorspeise
+   + y_E_vorspeise + y_F_vorspeise + y_G_vorspeise + y_H_vorspeise
+   + y_I_vorspeise >= 2
+ R65: y_A_hauptspeise + y_B_hauptspeise + y_C_hauptspeise + y_D_hauptspeise
+   + y_E_hauptspeise + y_F_hauptspeise + y_G_hauptspeise + y_H_hauptspeise
+   + y_I_hauptspeise <= 4
+ R66: y_A_hauptspeise + y_B_hauptspeise + y_C_hauptspeise + y_D_hauptspeise
+   + y_E_hauptspeise + y_F_hauptspeise + y_G_hauptspeise + y_H_hauptspeise
+   + y_I_hauptspeise >= 2
+ R67: y_A_nachspeise + y_B_nachspeise + y_C_nachspeise + y_D_nachspeise
+   + y_E_nachspeise + y_F_nachspeise + y_G_nachspeise + y_H_nachspeise
+   + y_I_nachspeise <= 4
+ R68: y_A_nachspeise + y_B_nachspeise + y_C_nachspeise + y_D_nachspeise
+   + y_E_nachspeise + y_F_nachspeise + y_G_nachspeise + y_H_nachspeise
+   + y_I_nachspeise >= 2
+ R69: x_B_A_vorspeise + x_C_A_vorspeise + x_D_A_vorspeise + x_E_A_vorspeise
+   + x_F_A_vorspeise + x_G_A_vorspeise + x_H_A_vorspeise + x_I_A_vorspeise
+   + y_A_vorspeise = 1
+ R70: x_B_A_hauptspeise + x_C_A_hauptspeise + x_D_A_hauptspeise
+   + x_E_A_hauptspeise + x_F_A_hauptspeise + x_G_A_hauptspeise
+   + x_H_A_hauptspeise + x_I_A_hauptspeise + y_A_hauptspeise = 1
+ R71: x_B_A_nachspeise + x_C_A_nachspeise + x_D_A_nachspeise
+   + x_E_A_nachspeise + x_F_A_nachspeise + x_G_A_nachspeise
+   + x_H_A_nachspeise + x_I_A_nachspeise + y_A_nachspeise = 1
+ R72: x_A_B_vorspeise + x_C_B_vorspeise + x_D_B_vorspeise + x_E_B_vorspeise
+   + x_F_B_vorspeise + x_G_B_vorspeise + x_H_B_vorspeise + x_I_B_vorspeise
+   + y_B_vorspeise = 1
+ R73: x_A_B_hauptspeise + x_C_B_hauptspeise + x_D_B_hauptspeise
+   + x_E_B_hauptspeise + x_F_B_hauptspeise + x_G_B_hauptspeise
+   + x_H_B_hauptspeise + x_I_B_hauptspeise + y_B_hauptspeise = 1
+ R74: x_A_B_nachspeise + x_C_B_nachspeise + x_D_B_nachspeise
+   + x_E_B_nachspeise + x_F_B_nachspeise + x_G_B_nachspeise
+   + x_H_B_nachspeise + x_I_B_nachspeise + y_B_nachspeise = 1
+ R75: x_A_C_vorspeise + x_B_C_vorspeise + x_D_C_vorspeise + x_E_C_vorspeise
+   + x_F_C_vorspeise + x_G_C_vorspeise + x_H_C_vorspeise + x_I_C_vorspeise
+   + y_C_vorspeise = 1
+ R76: x_A_C_hauptspeise + x_B_C_hauptspeise + x_D_C_hauptspeise
+   + x_E_C_hauptspeise + x_F_C_hauptspeise + x_G_C_hauptspeise
+   + x_H_C_hauptspeise + x_I_C_hauptspeise + y_C_hauptspeise = 1
+ R77: x_A_C_nachspeise + x_B_C_nachspeise + x_D_C_nachspeise
+   + x_E_C_nachspeise + x_F_C_nachspeise + x_G_C_nachspeise
+   + x_H_C_nachspeise + x_I_C_nachspeise + y_C_nachspeise = 1
+ R78: x_A_D_vorspeise + x_B_D_vorspeise + x_C_D_vorspeise + x_E_D_vorspeise
+   + x_F_D_vorspeise + x_G_D_vorspeise + x_H_D_vorspeise + x_I_D_vorspeise
+   + y_D_vorspeise = 1
+ R79: x_A_D_hauptspeise + x_B_D_hauptspeise + x_C_D_hauptspeise
+   + x_E_D_hauptspeise + x_F_D_hauptspeise + x_G_D_hauptspeise
+   + x_H_D_hauptspeise + x_I_D_hauptspeise + y_D_hauptspeise = 1
+ R80: x_A_D_nachspeise + x_B_D_nachspeise + x_C_D_nachspeise
+   + x_E_D_nachspeise + x_F_D_nachspeise + x_G_D_nachspeise
+   + x_H_D_nachspeise + x_I_D_nachspeise + y_D_nachspeise = 1
+ R81: x_A_E_vorspeise + x_B_E_vorspeise + x_C_E_vorspeise + x_D_E_vorspeise
+   + x_F_E_vorspeise + x_G_E_vorspeise + x_H_E_vorspeise + x_I_E_vorspeise
+   + y_E_vorspeise = 1
+ R82: x_A_E_hauptspeise + x_B_E_hauptspeise + x_C_E_hauptspeise
+   + x_D_E_hauptspeise + x_F_E_hauptspeise + x_G_E_hauptspeise
+   + x_H_E_hauptspeise + x_I_E_hauptspeise + y_E_hauptspeise = 1
+ R83: x_A_E_nachspeise + x_B_E_nachspeise + x_C_E_nachspeise
+   + x_D_E_nachspeise + x_F_E_nachspeise + x_G_E_nachspeise
+   + x_H_E_nachspeise + x_I_E_nachspeise + y_E_nachspeise = 1
+ R84: x_A_F_vorspeise + x_B_F_vorspeise + x_C_F_vorspeise + x_D_F_vorspeise
+   + x_E_F_vorspeise + x_G_F_vorspeise + x_H_F_vorspeise + x_I_F_vorspeise
+   + y_F_vorspeise = 1
+ R85: x_A_F_hauptspeise + x_B_F_hauptspeise + x_C_F_hauptspeise
+   + x_D_F_hauptspeise + x_E_F_hauptspeise + x_G_F_hauptspeise
+   + x_H_F_hauptspeise + x_I_F_hauptspeise + y_F_hauptspeise = 1
+ R86: x_A_F_nachspeise + x_B_F_nachspeise + x_C_F_nachspeise
+   + x_D_F_nachspeise + x_E_F_nachspeise + x_G_F_nachspeise
+   + x_H_F_nachspeise + x_I_F_nachspeise + y_F_nachspeise = 1
+ R87: x_A_G_vorspeise + x_B_G_vorspeise + x_C_G_vorspeise + x_D_G_vorspeise
+   + x_E_G_vorspeise + x_F_G_vorspeise + x_H_G_vorspeise + x_I_G_vorspeise
+   + y_G_vorspeise = 1
+ R88: x_A_G_hauptspeise + x_B_G_hauptspeise + x_C_G_hauptspeise
+   + x_D_G_hauptspeise + x_E_G_hauptspeise + x_F_G_hauptspeise
+   + x_H_G_hauptspeise + x_I_G_hauptspeise + y_G_hauptspeise = 1
+ R89: x_A_G_nachspeise + x_B_G_nachspeise + x_C_G_nachspeise
+   + x_D_G_nachspeise + x_E_G_nachspeise + x_F_G_nachspeise
+   + x_H_G_nachspeise + x_I_G_nachspeise + y_G_nachspeise = 1
+ R90: x_A_H_vorspeise + x_B_H_vorspeise + x_C_H_vorspeise + x_D_H_vorspeise
+   + x_E_H_vorspeise + x_F_H_vorspeise + x_G_H_vorspeise + x_I_H_vorspeise
+   + y_H_vorspeise = 1
+ R91: x_A_H_hauptspeise + x_B_H_hauptspeise + x_C_H_hauptspeise
+   + x_D_H_hauptspeise + x_E_H_hauptspeise + x_F_H_hauptspeise
+   + x_G_H_hauptspeise + x_I_H_hauptspeise + y_H_hauptspeise = 1
+ R92: x_A_H_nachspeise + x_B_H_nachspeise + x_C_H_nachspeise
+   + x_D_H_nachspeise + x_E_H_nachspeise + x_F_H_nachspeise
+   + x_G_H_nachspeise + x_I_H_nachspeise + y_H_nachspeise = 1
+ R93: x_A_I_vorspeise + x_B_I_vorspeise + x_C_I_vorspeise + x_D_I_vorspeise
+   + x_E_I_vorspeise + x_F_I_vorspeise + x_G_I_vorspeise + x_H_I_vorspeise
+   + y_I_vorspeise = 1
+ R94: x_A_I_hauptspeise + x_B_I_hauptspeise + x_C_I_hauptspeise
+   + x_D_I_hauptspeise + x_E_I_hauptspeise + x_F_I_hauptspeise
+   + x_G_I_hauptspeise + x_H_I_hauptspeise + y_I_hauptspeise = 1
+ R95: x_A_I_nachspeise + x_B_I_nachspeise + x_C_I_nachspeise
+   + x_D_I_nachspeise + x_E_I_nachspeise + x_F_I_nachspeise
+   + x_G_I_nachspeise + x_H_I_nachspeise + y_I_nachspeise = 1
+ R96: km_A_1 + kn_A_1 - kp_A_1 <= 1
+ R97: km_A_2 + kn_A_2 - kp_A_2 <= 1
+ R98: km_A_3 + kn_A_3 - kp_A_3 <= 1
+ R99: km_B_1 + kn_B_1 - kp_B_1 <= 1
+ R100: km_B_2 + kn_B_2 - kp_B_2 <= 1
+ R101: km_B_3 + kn_B_3 - kp_B_3 <= 1
+ R102: km_C_1 + kn_C_1 - kp_C_1 <= 1
+ R103: km_C_2 + kn_C_2 - kp_C_2 <= 1
+ R104: km_C_3 + kn_C_3 - kp_C_3 <= 1
+ R105: km_D_1 + kn_D_1 - kp_D_1 <= 1
+ R106: km_D_2 + kn_D_2 - kp_D_2 <= 1
+ R107: km_D_3 + kn_D_3 - kp_D_3 <= 1
+ R108: km_E_1 + kn_E_1 - kp_E_1 <= 1
+ R109: km_E_2 + kn_E_2 - kp_E_2 <= 1
+ R110: km_E_3 + kn_E_3 - kp_E_3 <= 1
+ R111: km_F_1 + kn_F_1 - kp_F_1 <= 1
+ R112: km_F_2 + kn_F_2 - kp_F_2 <= 1
+ R113: km_F_3 + kn_F_3 - kp_F_3 <= 1
+ R114: km_G_1 + kn_G_1 - kp_G_1 <= 1
+ R115: km_G_2 + kn_G_2 - kp_G_2 <= 1
+ R116: km_G_3 + kn_G_3 - kp_G_3 <= 1
+ R117: km_H_1 + kn_H_1 - kp_H_1 <= 1
+ R118: km_H_2 + kn_H_2 - kp_H_2 <= 1
+ R119: km_H_3 + kn_H_3 - kp_H_3 <= 1
+ R120: km_I_1 + kn_I_1 - kp_I_1 <= 1
+ R121: km_I_2 + kn_I_2 - kp_I_2 <= 1
+ R122: km_I_3 + kn_I_3 - kp_I_3 <= 1
+Bounds
+Binaries
+ x_A_B_vorspeise x_A_B_hauptspeise x_A_B_nachspeise x_A_C_vorspeise
+ x_A_C_hauptspeise x_A_C_nachspeise x_A_D_vorspeise x_A_D_hauptspeise
+ x_A_D_nachspeise x_A_E_vorspeise x_A_E_hauptspeise x_A_E_nachspeise
+ x_A_F_vorspeise x_A_F_hauptspeise x_A_F_nachspeise x_A_G_vorspeise
+ x_A_G_hauptspeise x_A_G_nachspeise x_A_H_vorspeise x_A_H_hauptspeise
+ x_A_H_nachspeise x_A_I_vorspeise x_A_I_hauptspeise x_A_I_nachspeise
+ x_B_A_vorspeise x_B_A_hauptspeise x_B_A_nachspeise x_B_C_vorspeise
+ x_B_C_hauptspeise x_B_C_nachspeise x_B_D_vorspeise x_B_D_hauptspeise
+ x_B_D_nachspeise x_B_E_vorspeise x_B_E_hauptspeise x_B_E_nachspeise
+ x_B_F_vorspeise x_B_F_hauptspeise x_B_F_nachspeise x_B_G_vorspeise
+ x_B_G_hauptspeise x_B_G_nachspeise x_B_H_vorspeise x_B_H_hauptspeise
+ x_B_H_nachspeise x_B_I_vorspeise x_B_I_hauptspeise x_B_I_nachspeise
+ x_C_A_vorspeise x_C_A_hauptspeise x_C_A_nachspeise x_C_B_vorspeise
+ x_C_B_hauptspeise x_C_B_nachspeise x_C_D_vorspeise x_C_D_hauptspeise
+ x_C_D_nachspeise x_C_E_vorspeise x_C_E_hauptspeise x_C_E_nachspeise
+ x_C_F_vorspeise x_C_F_hauptspeise x_C_F_nachspeise x_C_G_vorspeise
+ x_C_G_hauptspeise x_C_G_nachspeise x_C_H_vorspeise x_C_H_hauptspeise
+ x_C_H_nachspeise x_C_I_vorspeise x_C_I_hauptspeise x_C_I_nachspeise
+ x_D_A_vorspeise x_D_A_hauptspeise x_D_A_nachspeise x_D_B_vorspeise
+ x_D_B_hauptspeise x_D_B_nachspeise x_D_C_vorspeise x_D_C_hauptspeise
+ x_D_C_nachspeise x_D_E_vorspeise x_D_E_hauptspeise x_D_E_nachspeise
+ x_D_F_vorspeise x_D_F_hauptspeise x_D_F_nachspeise x_D_G_vorspeise
+ x_D_G_hauptspeise x_D_G_nachspeise x_D_H_vorspeise x_D_H_hauptspeise
+ x_D_H_nachspeise x_D_I_vorspeise x_D_I_hauptspeise x_D_I_nachspeise
+ x_E_A_vorspeise x_E_A_hauptspeise x_E_A_nachspeise x_E_B_vorspeise
+ x_E_B_hauptspeise x_E_B_nachspeise x_E_C_vorspeise x_E_C_hauptspeise
+ x_E_C_nachspeise x_E_D_vorspeise x_E_D_hauptspeise x_E_D_nachspeise
+ x_E_F_vorspeise x_E_F_hauptspeise x_E_F_nachspeise x_E_G_vorspeise
+ x_E_G_hauptspeise x_E_G_nachspeise x_E_H_vorspeise x_E_H_hauptspeise
+ x_E_H_nachspeise x_E_I_vorspeise x_E_I_hauptspeise x_E_I_nachspeise
+ x_F_A_vorspeise x_F_A_hauptspeise x_F_A_nachspeise x_F_B_vorspeise
+ x_F_B_hauptspeise x_F_B_nachspeise x_F_C_vorspeise x_F_C_hauptspeise
+ x_F_C_nachspeise x_F_D_vorspeise x_F_D_hauptspeise x_F_D_nachspeise
+ x_F_E_vorspeise x_F_E_hauptspeise x_F_E_nachspeise x_F_G_vorspeise
+ x_F_G_hauptspeise x_F_G_nachspeise x_F_H_vorspeise x_F_H_hauptspeise
+ x_F_H_nachspeise x_F_I_vorspeise x_F_I_hauptspeise x_F_I_nachspeise
+ x_G_A_vorspeise x_G_A_hauptspeise x_G_A_nachspeise x_G_B_vorspeise
+ x_G_B_hauptspeise x_G_B_nachspeise x_G_C_vorspeise x_G_C_hauptspeise
+ x_G_C_nachspeise x_G_D_vorspeise x_G_D_hauptspeise x_G_D_nachspeise
+ x_G_E_vorspeise x_G_E_hauptspeise x_G_E_nachspeise x_G_F_vorspeise
+ x_G_F_hauptspeise x_G_F_nachspeise x_G_H_vorspeise x_G_H_hauptspeise
+ x_G_H_nachspeise x_G_I_vorspeise x_G_I_hauptspeise x_G_I_nachspeise
+ x_H_A_vorspeise x_H_A_hauptspeise x_H_A_nachspeise x_H_B_vorspeise
+ x_H_B_hauptspeise x_H_B_nachspeise x_H_C_vorspeise x_H_C_hauptspeise
+ x_H_C_nachspeise x_H_D_vorspeise x_H_D_hauptspeise x_H_D_nachspeise
+ x_H_E_vorspeise x_H_E_hauptspeise x_H_E_nachspeise x_H_F_vorspeise
+ x_H_F_hauptspeise x_H_F_nachspeise x_H_G_vorspeise x_H_G_hauptspeise
+ x_H_G_nachspeise x_H_I_vorspeise x_H_I_hauptspeise x_H_I_nachspeise
+ x_I_A_vorspeise x_I_A_hauptspeise x_I_A_nachspeise x_I_B_vorspeise
+ x_I_B_hauptspeise x_I_B_nachspeise x_I_C_vorspeise x_I_C_hauptspeise
+ x_I_C_nachspeise x_I_D_vorspeise x_I_D_hauptspeise x_I_D_nachspeise
+ x_I_E_vorspeise x_I_E_hauptspeise x_I_E_nachspeise x_I_F_vorspeise
+ x_I_F_hauptspeise x_I_F_nachspeise x_I_G_vorspeise x_I_G_hauptspeise
+ x_I_G_nachspeise x_I_H_vorspeise x_I_H_hauptspeise x_I_H_nachspeise
+ y_A_vorspeise y_A_hauptspeise y_A_nachspeise y_B_vorspeise y_B_hauptspeise
+ y_B_nachspeise y_C_vorspeise y_C_hauptspeise y_C_nachspeise y_D_vorspeise
+ y_D_hauptspeise y_D_nachspeise y_E_vorspeise y_E_hauptspeise
+ y_E_nachspeise y_F_vorspeise y_F_hauptspeise y_F_nachspeise y_G_vorspeise
+ y_G_hauptspeise y_G_nachspeise y_H_vorspeise y_H_hauptspeise
+ y_H_nachspeise y_I_vorspeise y_I_hauptspeise y_I_nachspeise c_A_vorspeise
+ c_A_hauptspeise c_A_nachspeise c_B_vorspeise c_B_hauptspeise
+ c_B_nachspeise c_C_vorspeise c_C_hauptspeise c_C_nachspeise c_D_vorspeise
+ c_D_hauptspeise c_D_nachspeise c_E_vorspeise c_E_hauptspeise
+ c_E_nachspeise c_F_vorspeise c_F_hauptspeise c_F_nachspeise c_G_vorspeise
+ c_G_hauptspeise c_G_nachspeise c_H_vorspeise c_H_hauptspeise
+ c_H_nachspeise c_I_vorspeise c_I_hauptspeise c_I_nachspeise d_A_vorspeise
+ d_A_hauptspeise d_A_nachspeise d_B_vorspeise d_B_hauptspeise
+ d_B_nachspeise d_C_vorspeise d_C_hauptspeise d_C_nachspeise d_D_vorspeise
+ d_D_hauptspeise d_D_nachspeise d_E_vorspeise d_E_hauptspeise
+ d_E_nachspeise d_F_vorspeise d_F_hauptspeise d_F_nachspeise d_G_vorspeise
+ d_G_hauptspeise d_G_nachspeise d_H_vorspeise d_H_hauptspeise
+ d_H_nachspeise d_I_vorspeise d_I_hauptspeise d_I_nachspeise km_A_1 km_A_2
+ km_A_3 km_B_1 km_B_2 km_B_3 km_C_1 km_C_2 km_C_3 km_D_1 km_D_2 km_D_3
+ km_E_1 km_E_2 km_E_3 km_F_1 km_F_2 km_F_3 km_G_1 km_G_2 km_G_3 km_H_1
+ km_H_2 km_H_3 km_I_1 km_I_2 km_I_3 kn_A_1 kn_A_2 kn_A_3 kn_B_1 kn_B_2
+ kn_B_3 kn_C_1 kn_C_2 kn_C_3 kn_D_1 kn_D_2 kn_D_3 kn_E_1 kn_E_2 kn_E_3
+ kn_F_1 kn_F_2 kn_F_3 kn_G_1 kn_G_2 kn_G_3 kn_H_1 kn_H_2 kn_H_3 kn_I_1
+ kn_I_2 kn_I_3 kp_A_1 kp_A_2 kp_A_3 kp_B_1 kp_B_2 kp_B_3 kp_C_1 kp_C_2
+ kp_C_3 kp_D_1 kp_D_2 kp_D_3 kp_E_1 kp_E_2 kp_E_3 kp_F_1 kp_F_2 kp_F_3
+ kp_G_1 kp_G_2 kp_G_3 kp_H_1 kp_H_2 kp_H_3 kp_I_1 kp_I_2 kp_I_3
+End
