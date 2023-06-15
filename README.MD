@@ -50,7 +50,7 @@ Sonst spuckt der Log ganz viele Sachen aus, die in den meisten Fällen nicht int
 ja mal ein Blick in den Code ;)
 
 ### Hä?
-Bei Fragen an Kevin Conrads (kevin.conrads@kawo3.rwth-aachen.de) wenden!
+Bei Fragen an Kevin Conrads (kev.con@posteo.de) wenden!
 
 Viel Spaß beim Basteln
 
