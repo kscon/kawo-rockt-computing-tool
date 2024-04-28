@@ -1,3 +1,6 @@
+> [!NOTE]
+> This project will not be developed any further. Its documentation is currently only in german, and *might* be polished and translated into English in the future.  
+
 # Kawo-Rockt-Computing Tool
 
 ### Was?
